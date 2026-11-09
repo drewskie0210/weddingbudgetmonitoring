@@ -226,8 +226,15 @@ function originalOtherExpenses(){return [{id:'opening-mamanhikan',name:'Pamamanh
 // Initial Tab 3 guide cards based only on services/items already recorded in the tracker.
 // These are NOT payments, do not affect budget totals, and are imported once.
 function seedVendorGuides(a){
- if(a.vendorGuidesSeeded2026)return a;
  if(!Array.isArray(a.vendors))a.vendors=[];
+ // Ensure Lechon is present in Tab 3 even for previously seeded cloud/backup records.
+ // Never duplicate an existing Lechon gallery card or alter the financial budget.
+ const existingLechon=a.vendors.some(v=>/lechon/i.test(String(v.service||'')) || /lechon/i.test(String(v.name||'')));
+ const budgetHasLechon=Array.isArray(a.items)&&a.items.some(x=>/lechon/i.test(String(x.name||'')));
+ if(budgetHasLechon&&!existingLechon&&a.vendors.length<30){
+   a.vendors.push({id:'guide-2026-lechon-baboy',name:'Lechon Supplier – To Confirm',service:'Lechon Baboy (Good for 50 pax)',status:'Pending',notes:'Supplier to confirm. ₱12,000 listed in the wedding budget; additional pax pending decision. Add supplier photos or documents here.',photo:'',attachments:[]});
+ }
+ if(a.vendorGuidesSeeded2026)return a;
  const listed=(pattern)=>a.items.some(x=>pattern.test(x.name));
  const guides=[
   {test:/Reception|Catering Adult|Lights & Sound/i,name:'Web Events Place',service:'Reception, Catering & Lights / Sound',notes:'Venue / base package; verify service inclusions and add reference photos.'},
@@ -247,7 +254,7 @@ function seedVendorGuides(a){
  const known=a.vendors;
  for(const g of guides){
   if(!listed(g.test))continue;
-  if(known.some(v=>v.service.toLowerCase()===g.service.toLowerCase()))continue;
+  if(known.some(v=>v.service.toLowerCase()===g.service.toLowerCase() || (/lechon/i.test(g.service)&&/lechon/i.test(v.service))))continue;
   if(known.length>=30)break;
   known.push({id:'guide-2026-'+g.service.toLowerCase().replace(/[^a-z0-9]+/g,'-'),name:g.name,service:g.service,status:g.name.includes('To Confirm')?'Pending':'Selected',notes:g.notes,photo:''});
  }
