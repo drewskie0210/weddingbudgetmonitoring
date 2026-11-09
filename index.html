@@ -166,7 +166,7 @@ body.viewer-mode #vendorAddButton,body.viewer-mode .vendor-actions{display:none!
 </section></div>
 <div id="vendorsTab" role="tabpanel" aria-labelledby="vendorsTabButton" hidden>
  <section class="panel" id="vendorGallery" aria-label="Wedding vendors and suppliers gallery">
-  <div class="top" style="margin-bottom:8px"><div><h2>🖼️ Wedding Vendors & Suppliers</h2><p class="lead">Mga napiling wedding vendors, products, services, at photos. Hindi ito kasama sa wedding budget computations.</p></div><div class="buttons"><button type="button" class="btn primary" id="vendorAddButton">+ Add Vendor / Item</button></div></div>
+  <div class="top" style="margin-bottom:8px"><div><h2>🖼️ Wedding Vendors & Suppliers</h2><p class="lead">Guide entries mula sa existing Wedding Budget Tracker. I-edit ang vendor details at mag-upload ng actual reference photos. Hindi kasama sa budget computations.</p></div><div class="buttons"><button type="button" class="btn primary" id="vendorAddButton">+ Add Vendor / Item</button></div></div>
   <p class="vendor-gallery-note">Admin can add, edit or delete entries and upload a single reference image per item. Public viewers can view the gallery only. Small uploaded images are compressed for cloud sync.</p>
   <div id="vendorCards" class="vendor-grid" aria-live="polite"></div>
  </section>
@@ -196,10 +196,41 @@ const defaults=[
 const KEY='wedding-fund-expense-tracker-sponsors-v4', OLDKEY='wedding-fund-expense-tracker-correct-fund-v3';let serial=0;const id=()=>String(Date.now())+'-'+(++serial);const $=x=>document.getElementById(x);const money=n=>Math.round((Number(n)||0)*100)/100;const php=n=>new Intl.NumberFormat('en-PH',{style:'currency',currency:'PHP'}).format(n);const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function startingContributions(total=95000){return total===95000?[{id:'opening-45000',name:'Diane',amount:45000,date:'',note:'Original contribution — Diane'},{id:'opening-50000',name:'Maricel',amount:50000,date:'',note:'Original contribution — Maricel'},{id:'opening-erick-75000',name:'Eric',amount:75000,date:'',note:'Wedding fund contribution — Kuya Eric'},{id:'opening-andrew-50000',name:'Andrew',amount:50000,date:'',note:'Wedding fund contribution — Andrew'}]:total>0?[{id:'opening-legacy',name:'Unassigned',amount:money(total),date:'',note:'Imported original fund — assign sponsor'}]:[]}
 function originalOtherExpenses(){return [{id:'opening-mamanhikan',name:'Pamamanhikan',amount:5270,date:'',note:'Original wedding fund expense'},{id:'opening-prenup-loan',name:'Prenup — wedding fund share',amount:3576,date:'2026-09-14',note:'Sept 14, 2026 prenup ₱10,576; Diane gave extra ₱7,000 outside her ₱45,000 wedding contribution; only ₱3,576 charged to wedding fund'}]}
+// Initial Tab 3 guide cards based only on services/items already recorded in the tracker.
+// These are NOT payments, do not affect budget totals, and are imported once.
+function seedVendorGuides(a){
+ if(a.vendorGuidesSeeded2026)return a;
+ if(!Array.isArray(a.vendors))a.vendors=[];
+ const listed=(pattern)=>a.items.some(x=>pattern.test(x.name));
+ const guides=[
+  {test:/Reception|Catering Adult|Lights & Sound/i,name:'Web Events Place',service:'Reception, Catering & Lights / Sound',notes:'Venue / base package; verify service inclusions and add reference photos.'},
+  {test:/Photo\/Videographer.*Great Creation/i,name:'Great Creation',service:'Wedding Photography & Videography',notes:'Prenup and wedding-day photo/video.'},
+  {test:/Photobooth.*Great Creation/i,name:'Great Creation',service:'Wedding Photobooth',notes:'3 hours unlimited; laminated prints (per tracker).'},
+  {test:/Makeup Artist.*FLCTY/i,name:'FLCTY MHU',service:'Bridal Hair & Makeup',notes:'Prenup and wedding-day HMUA.'},
+  {test:/OTD Coordinator.*FLCTY/i,name:'FLCTY MHU',service:'On-the-Day Wedding Coordination',notes:'Wedding-day coordinator.'},
+  {test:/Emcee.*Rodel Usana/i,name:'Rodel Usana',service:'Wedding Host / Emcee',notes:'Host listed in wedding budget.'},
+  {test:/^Cake$/i,name:'Cake Vendor – To Confirm',service:'Wedding Cake',notes:'Add actual cake vendor name and selected cake design photo.'},
+  {test:/Florist for Entourage/i,name:'Florist – To Confirm',service:'Entourage Flowers / Florist',notes:'Add florist name and actual flower arrangement references.'},
+  {test:/Garden Ceremony/i,name:'Ceremony Supplier – To Confirm',service:'Garden Ceremony Setup',notes:'Ceremony setup and decorations.'},
+  {test:/Lechon/i,name:'Lechon Supplier – To Confirm',service:'Lechon',notes:'Supplier name / details to confirm.'},
+  {test:/^Ring$/i,name:'Ring Supplier – To Confirm',service:'Wedding Rings',notes:'Design and supplier to confirm; current budget is tentative.'},
+  {test:/Pica-Pica/i,name:'Pica-Pica Supplier – To Confirm',service:'Pica-Pica',notes:'Optional item; price and supplier not yet confirmed.'},
+  {test:/Mobile Bar \/ Cocktail Drinks/i,name:'Mobile Bar – To Confirm',service:'Mobile Bar / Cocktail Drinks',notes:'Optional service; supplier not yet confirmed.'}
+ ];
+ const known=a.vendors;
+ for(const g of guides){
+  if(!listed(g.test))continue;
+  if(known.some(v=>v.service.toLowerCase()===g.service.toLowerCase()))continue;
+  if(known.length>=30)break;
+  known.push({id:'guide-2026-'+g.service.toLowerCase().replace(/[^a-z0-9]+/g,'-'),name:g.name,service:g.service,status:g.name.includes('To Confirm')?'Pending':'Selected',notes:g.notes,photo:''});
+ }
+ a.vendorGuidesSeeded2026=true;
+ return a;
+}
 // Add the requested wedding-budget entries once, including for saved/cloud records.
 // Preserve existing payments, prevent duplicate Lechon expenses, and keep new items editable.
 function applyRequestedBudgetEntries(a){
-  if(a.requestedBudgetEntriesNov2026)return a;
+  if(a.requestedBudgetEntriesNov2026)return seedVendorGuides(a);
   const findByName=(names)=>a.items.find(x=>names.includes(x.name.trim().toLowerCase()));
   let lechon=findByName(['lechon baboy','lechon']);
   if(!lechon){lechon={id:'requested-lechon-baboy-2026',category:'other',name:'Lechon Baboy',due:12000,paid:0,note:''};a.items.push(lechon)}
@@ -213,7 +244,7 @@ function applyRequestedBudgetEntries(a){
   if(!gown){gown={id:'requested-wedding-gown-2026',category:'other',name:'Wedding Gown',due:0,paid:0,note:''};a.items.push(gown)}
   gown.category='other';gown.due=0;gown.note='Shouldered by the Bride';
   a.requestedBudgetEntriesNov2026=true;
-  return a;
+  return seedVendorGuides(a);
 }
 const defaultAccommodationRooms=[
  {name:'Novadeci Room – Bride',purpose:'Bridal preparation / hair & makeup / getting-ready photos',amount:3500,shares:{Diane:3500,Maricel:0},remarks:'50% DP paid'},
@@ -244,7 +275,7 @@ function normalizeVendors(rows){
  })).filter(v=>v.name&&v.service);
 }
 function fresh(){return applyRequestedBudgetEntries({vendors:[],accommodationRooms:structuredClone(defaultAccommodationRooms),catherineItems:structuredClone(defaultCatherineItems),accommodationPaid:{Diane:4250,Maricel:1500},previousOther:0,pax:150,rate:550,items:defaults.map((x,i)=>({id:'init-'+(i>=10?i+1:i),category:x[0],name:x[1],due:x[2],paid:x[3],note:x[4]})),contributions:startingContributions(),otherExpenses:originalOtherExpenses()})}
-function normalize(a){if(!a||!Array.isArray(a.items))throw Error('Not a compatible backup');const legacyOpening=!a.sponsorModelV4 && Object.hasOwn(a,'originalFund') ? startingContributions(money(a.originalFund)):[];return applyRequestedBudgetEntries({vendors:normalizeVendors(a.vendors),accommodationRooms:normalizedPersonalRows(a.accommodationRooms,defaultAccommodationRooms,true),catherineItems:normalizedPersonalRows(a.catherineItems,defaultCatherineItems,false),accommodationPaid:{Diane:Math.max(0,money(a.accommodationPaid?.Diane??4250)),Maricel:Math.max(0,money(a.accommodationPaid?.Maricel??1500))},requestedBudgetEntriesNov2026:!!a.requestedBudgetEntriesNov2026,sponsorModelV4:true,budgetRevisionNov2026:!!a.budgetRevisionNov2026,erick75000Revision:!!a.erick75000Revision,andrew50000Revision:!!a.andrew50000Revision,previousOther:money(a.previousOther),pax:Math.max(0,Math.floor(Number(a.pax)||0)),rate:money(a.rate),items:a.items.filter(x=>x&&categories[x.category]&&!(x.name==='Prenup Venue'&&money(x.due)===0&&money(x.paid)===0)).map(x=>({id:String(x.id||id()),category:x.category,name:String(x.name||'').slice(0,160),due:money(x.due),paid:money(x.paid),note:String(x.note||'')==='Original ₱5,000 paid separately from base package line items; payment credit only'?'Catering down payment paid from wedding fund contributions. Already counted in supplier payments and deducted from remaining cash fund; do not deduct twice.':String(x.note||'')})),contributions:[...legacyOpening,...(a.contributions||[]).filter(x=>x&&typeof x.name==='string'&&x.name.trim()).map(x=>({...x,id:String(x.id||id()),name:x.name.trim()==='Erick'?'Eric':x.name.trim().slice(0,100),amount:money(x.amount)}))],otherExpenses:(a.otherExpenses||[]).filter(x=>x&&typeof x.name==='string').map(x=>({...x,name:/^mamanhikan$/i.test(x.name)?'Pamamanhikan':x.name,amount:money(x.amount)}))})}
+function normalize(a){if(!a||!Array.isArray(a.items))throw Error('Not a compatible backup');const legacyOpening=!a.sponsorModelV4 && Object.hasOwn(a,'originalFund') ? startingContributions(money(a.originalFund)):[];return applyRequestedBudgetEntries({vendors:normalizeVendors(a.vendors),vendorGuidesSeeded2026:!!a.vendorGuidesSeeded2026,accommodationRooms:normalizedPersonalRows(a.accommodationRooms,defaultAccommodationRooms,true),catherineItems:normalizedPersonalRows(a.catherineItems,defaultCatherineItems,false),accommodationPaid:{Diane:Math.max(0,money(a.accommodationPaid?.Diane??4250)),Maricel:Math.max(0,money(a.accommodationPaid?.Maricel??1500))},requestedBudgetEntriesNov2026:!!a.requestedBudgetEntriesNov2026,sponsorModelV4:true,budgetRevisionNov2026:!!a.budgetRevisionNov2026,erick75000Revision:!!a.erick75000Revision,andrew50000Revision:!!a.andrew50000Revision,previousOther:money(a.previousOther),pax:Math.max(0,Math.floor(Number(a.pax)||0)),rate:money(a.rate),items:a.items.filter(x=>x&&categories[x.category]&&!(x.name==='Prenup Venue'&&money(x.due)===0&&money(x.paid)===0)).map(x=>({id:String(x.id||id()),category:x.category,name:String(x.name||'').slice(0,160),due:money(x.due),paid:money(x.paid),note:String(x.note||'')==='Original ₱5,000 paid separately from base package line items; payment credit only'?'Catering down payment paid from wedding fund contributions. Already counted in supplier payments and deducted from remaining cash fund; do not deduct twice.':String(x.note||'')})),contributions:[...legacyOpening,...(a.contributions||[]).filter(x=>x&&typeof x.name==='string'&&x.name.trim()).map(x=>({...x,id:String(x.id||id()),name:x.name.trim()==='Erick'?'Eric':x.name.trim().slice(0,100),amount:money(x.amount)}))],otherExpenses:(a.otherExpenses||[]).filter(x=>x&&typeof x.name==='string').map(x=>({...x,name:/^mamanhikan$/i.test(x.name)?'Pamamanhikan':x.name,amount:money(x.amount)}))})}
 let state;try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLDKEY);state=raw?normalize(JSON.parse(raw)):fresh()}catch{state=fresh()}
  // Apply this budget-list revision once to existing browser data, without changing recorded payments.
  // Only change untouched old default entries; retain user-customized prices and paid amounts.
@@ -375,7 +406,7 @@ async function openCloudFor(user){
      if(pending && confirm('May local edits na hindi pa naka-sync. OK = upload local browser copy; Cancel = gamitin ang cloud copy. Gumawa muna ng Backup JSON kung hindi sigurado.')){
        unlockPage(user);save();return;
      }
-     const needsBudgetSync=!data.data?.requestedBudgetEntriesNov2026 || (data.data?.contributions||[]).some(x=>x.name==='Erick');
+     const needsBudgetSync=!data.data?.requestedBudgetEntriesNov2026 || !data.data?.vendorGuidesSeeded2026 || (data.data?.contributions||[]).some(x=>x.name==='Erick');
       state=normalize(data.data);localAtStartup=JSON.stringify(state);
      try{localStorage.setItem(KEY,JSON.stringify(state));localStorage.removeItem(PENDING_KEY)}catch{}
      unlockPage(user);if(needsBudgetSync)save();else statusLine('✓ Cloud data loaded from Supabase.');
