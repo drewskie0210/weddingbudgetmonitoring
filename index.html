@@ -20,6 +20,31 @@ body.cloud-locked .viewer-entry{display:none}
 .cloud-access .buttons button{flex:1}
 .cloud-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 12px;background:#eaf2eb;border:1px solid #cee7d7;border-radius:10px;margin-bottom:12px;font-size:13px}
 .cloud-message{margin-top:12px;color:#476b54;font-size:13px;overflow-wrap:anywhere}
+
+/* Mobile-friendly accommodation reference cards, without changing budget calculations. */
+@media(max-width:640px){
+  .wrap{padding:14px 10px 50px}
+  .top{align-items:stretch}
+  .buttons{width:100%}
+  .buttons .btn{flex:1 1 auto}
+  .line{flex-wrap:wrap;gap:4px 12px}
+  .line strong{white-space:normal;text-align:right;margin-left:auto}
+  #personalShoulderedReference{padding:15px}
+  #personalShoulderedReference .tag{max-width:100%;white-space:normal}
+  #personalShoulderedReference .tablewrap{overflow:visible;border:0;margin-top:10px}
+  #personalShoulderedReference .reference-mobile-table,
+  #personalShoulderedReference .reference-mobile-table tbody,
+  #personalShoulderedReference .reference-mobile-table tr,
+  #personalShoulderedReference .reference-mobile-table td{display:block;width:100%;min-width:0}
+  #personalShoulderedReference .reference-mobile-table thead{display:none}
+  #personalShoulderedReference .reference-mobile-table tr{margin-bottom:12px;padding:8px 12px;border:1px solid #dde8df;border-radius:12px;background:#fbfdfb}
+  #personalShoulderedReference .reference-mobile-table td{display:grid;grid-template-columns:minmax(90px,36%) minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid #edf1ed;text-align:left!important;white-space:normal;overflow-wrap:anywhere;align-items:start}
+  #personalShoulderedReference .reference-mobile-table td:last-child{border-bottom:0}
+  #personalShoulderedReference .reference-mobile-table td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#65766f;white-space:normal}
+  #personalShoulderedReference .reference-mobile-table .reference-total-row{background:#eaf4ed}
+  .tablewrap:not(#personalShoulderedReference .tablewrap){-webkit-overflow-scrolling:touch}
+  .card{min-width:0}
+}
 </style></head><body class="cloud-locked">
 <div class="cloud-access" id="cloudAccess"><section class="panel">
 <div class="eyebrow">Supabase • Secure Cloud Tracker</div><h1 style="font-size:26px">Wedding Fund Tracker Login</h1>
@@ -40,26 +65,26 @@ body.cloud-locked .viewer-entry{display:none}
 <section class="panel" id="quickAddPanel" aria-label="Admin Quick Add"><div class="top" style="margin-bottom:8px"><div><h2>➕ Add New Item or Expense</h2><p class="lead" style="margin:4px 0 0">Para sa bagong supplier/budget item o dagdag na gastos na nabayaran na.</p></div></div><div class="two"><div class="subtle"><b>Bagong Budget Item</b><p class="tiny muted">Ilagay ang item name, category, estimated price at amount paid (kung meron).</p><button class="btn primary" type="button" id="quickBudgetAdd">+ Add New Item</button></div><div class="subtle"><b>Additional Expense</b><p class="tiny muted">Ilagay ang expense name, amount, date at optional note. Mababawas ito sa remaining cash.</p><button class="btn primary" type="button" id="quickExpenseAdd">+ Add Expense</button></div></div></section>
 <section class="panel"><h2>💰 Wedding Fund Breakdown</h2><p class="lead">Ang total fund ay galing sa mga naka-record na sponsor contributions. Editable at puwedeng i-delete ang bawat ambag sa Sponsor Contributions section.</p><div><label class="field">Total sponsor contributions</label><div class="big" id="contributionTotal">₱95,000.00</div><div class="tiny muted">Automatic galing sa sponsor records.</div></div><div class="line"><span>All sponsor contributions (including original)</span><strong id="fundStart"></strong></div><div class="line"><span>− Supplier payments / down (from wedding budget list)</span><strong id="supplierDeduct"></strong></div><div class="line" id="previousDeductRow"><span>− Other expenses already spent</span><strong id="previousDeduct"></strong></div><div class="line"><span>− Other Expenses<span class="tiny muted" style="display:block;margin-top:3px">Pamamanhikan at prenup expenses (wedding fund share).</span></span><strong id="otherDeduct"></strong></div><div class="line"><b>Current Remaining Fund</b><strong id="fundLeftLine" style="color:#176d46"></strong></div><div class="warning">Ang mga “Amount Paid” sa Wedding Budget ay awtomatikong ibinabawas sa fund. Huwag nang idagdag ulit sa Other Expenses ang parehong down payment. Kung may supplier payment na hindi galing sa fund na ito, kailangang i-adjust ang tracking para sa ibang pinanggalingan ng bayad.</div></section>
 <section class="panel"><h2>📸 Prenup Expenses — September 14, 2026</h2><p class="lead">Summary lang ng prenup expenses at source ng funds. Ang extra ₱7,000 ni Diane ay hiwalay sa ₱45,000 wedding contribution niya.</p><div class="line"><span>Total actual prenup expenses</span><strong>₱10,576.00</strong></div><div class="line"><span>Extra prenup support from Diane (outside wedding fund)</span><strong>−₱7,000.00</strong></div><div class="line"><span><b>Charged to wedding fund (already recorded)</b></span><strong>₱3,576.00</strong></div><div class="subtle tiny">Summary only. Naka-record na ang ₱3,576 sa Other Expenses, kaya hindi ito ibabawas ulit. Hindi kasama sa wedding fund contributions ang extra ₱7,000 ni Diane.</div></section>
-<section class="panel" id="personalShoulderedReference" aria-label="Personally shouldered expenses for reference only">
+<section aria-label="Personally shouldered expenses for reference only" class="panel" id="personalShoulderedReference">
 <div class="top" style="margin-bottom:6px"><div><h2>🏨 Room Accommodation &amp; Personally Shouldered Items</h2><p class="lead" style="margin-bottom:0">For Reference Only — Excluded from Wedding Budget Tracking</p></div><span class="tag">Not charged to wedding fund</span></div>
 <div class="warning"><b>Reference only.</b> Ang mga halagang nasa section na ito ay personal na shouldered at <b>hindi idinadagdag o ibinabawas</b> sa Total Wedding Budget, Total Expenses Paid, Supplier Payments, Remaining Cash Fund, o Remaining Supplier Balance. Hindi rin ito sponsor contributions.</div>
 <h3 style="margin-bottom:6px">Room Accommodation Breakdown</h3>
-<div class="tablewrap"><table><thead><tr><th>Room</th><th>Purpose</th><th class="num">Total Amount</th><th>Shouldered By</th><th>Remarks</th></tr></thead><tbody>
-<tr><td>Novadeci Room – Bride</td><td>Bridal preparation / hair &amp; makeup / getting-ready photos</td><td class="num">₱3,500.00</td><td>Diane</td><td>50% DP paid</td></tr>
-<tr><td>1 Pre-Pro Room</td><td>Preparation / getting-ready room for Catherine’s family members in the entourage and her parents</td><td class="num">₱2,000.00</td><td>Diane</td><td>50% DP paid</td></tr>
-<tr><td>3 Pre-Pro Rooms (₱2,000 per room)</td><td>Preparation / getting-ready rooms for Andrew and family members included in the entourage</td><td class="num">₱6,000.00</td><td>Diane &amp; Maricel (₱3,000 each)</td><td>50% DP paid by each</td></tr>
-<tr><td><b>Total Room Accommodation</b></td><td class="num"><b>₱11,500.00</b></td><td colspan="3">Personally shouldered — reference only</td></tr>
+<div class="tablewrap"><table class="reference-mobile-table"><thead><tr><th>Room</th><th>Purpose</th><th class="num">Total Amount</th><th>Shouldered By</th><th>Remarks</th></tr></thead><tbody>
+<tr><td data-label="Room">Novadeci Room – Bride</td><td data-label="Purpose">Bridal preparation / hair &amp; makeup / getting-ready photos</td><td class="num" data-label="Total Amount">₱3,500.00</td><td data-label="Shouldered By">Diane</td><td data-label="Remarks">50% DP paid</td></tr>
+<tr><td data-label="Room">1 Pre-Pro Room</td><td data-label="Purpose">Preparation / getting-ready room for Catherine’s family members in the entourage and her parents</td><td class="num" data-label="Total Amount">₱2,000.00</td><td data-label="Shouldered By">Diane</td><td data-label="Remarks">50% DP paid</td></tr>
+<tr><td data-label="Room">3 Pre-Pro Rooms (₱2,000 per room)</td><td data-label="Purpose">Preparation / getting-ready rooms for Andrew and family members included in the entourage</td><td class="num" data-label="Total Amount">₱6,000.00</td><td data-label="Shouldered By">Diane &amp; Maricel (₱3,000 each)</td><td data-label="Remarks">50% DP paid by each</td></tr>
+<tr class="reference-total-row"><td data-label="Summary"><b>Total Room Accommodation</b></td><td class="num" data-label="Total Amount"><b>₱11,500.00</b></td><td colspan="3" data-label="Note">Personally shouldered — reference only</td></tr>
 </tbody></table></div>
 <h3 style="margin:20px 0 6px">Accommodation Payment Summary</h3>
-<div class="tablewrap"><table><thead><tr><th>Shouldered By</th><th class="num">Total Share</th><th class="num">DP Paid (50%)</th><th class="num">Remaining Balance</th><th>Payment Status</th></tr></thead><tbody>
-<tr><td>Diane</td><td class="num">₱8,500.00</td><td class="num">₱4,250.00</td><td class="num">₱4,250.00</td><td>50% DP Paid</td></tr>
-<tr><td>Maricel</td><td class="num">₱3,000.00</td><td class="num">₱1,500.00</td><td class="num">₱1,500.00</td><td>50% DP Paid</td></tr>
-<tr><td><b>Total</b></td><td class="num"><b>₱11,500.00</b></td><td class="num"><b>₱5,750.00</b></td><td class="num"><b>₱5,750.00</b></td><td>50% DP Paid</td></tr>
+<div class="tablewrap"><table class="reference-mobile-table"><thead><tr><th>Shouldered By</th><th class="num">Total Share</th><th class="num">DP Paid (50%)</th><th class="num">Remaining Balance</th><th>Payment Status</th></tr></thead><tbody>
+<tr><td data-label="Shouldered By">Diane</td><td class="num" data-label="Total Share">₱8,500.00</td><td class="num" data-label="DP Paid (50%)">₱4,250.00</td><td class="num" data-label="Remaining Balance">₱4,250.00</td><td data-label="Payment Status">50% DP Paid</td></tr>
+<tr><td data-label="Shouldered By">Maricel</td><td class="num" data-label="Total Share">₱3,000.00</td><td class="num" data-label="DP Paid (50%)">₱1,500.00</td><td class="num" data-label="Remaining Balance">₱1,500.00</td><td data-label="Payment Status">50% DP Paid</td></tr>
+<tr><td data-label="Shouldered By"><b>Total</b></td><td class="num" data-label="Total Share"><b>₱11,500.00</b></td><td class="num" data-label="DP Paid (50%)"><b>₱5,750.00</b></td><td class="num" data-label="Remaining Balance"><b>₱5,750.00</b></td><td data-label="Payment Status">50% DP Paid</td></tr>
 </tbody></table></div>
 <h3 style="margin:20px 0 6px">Bridesmaids' Items — Shouldered by Catherine</h3>
-<div class="tablewrap"><table><thead><tr><th>Item</th><th>Purpose</th><th>Shouldered By</th><th class="num">Amount</th><th>Remarks</th></tr></thead><tbody>
-<tr><td>Bridesmaids Sleepwear (Pangtulog)</td><td>Bridesmaids getting-ready outfit / prep photos</td><td>Catherine</td><td class="num">TBA</td><td>For reference only</td></tr>
-<tr><td>Bridesmaids Slippers</td><td>Comfortable footwear during wedding preparation / getting-ready photos</td><td>Catherine</td><td class="num">TBA</td><td>For reference only</td></tr>
+<div class="tablewrap"><table class="reference-mobile-table"><thead><tr><th>Item</th><th>Purpose</th><th>Shouldered By</th><th class="num">Amount</th><th>Remarks</th></tr></thead><tbody>
+<tr><td data-label="Item">Bridesmaids Sleepwear (Pangtulog)</td><td data-label="Purpose">Bridesmaids getting-ready outfit / prep photos</td><td data-label="Shouldered By">Catherine</td><td class="num" data-label="Amount">TBA</td><td data-label="Remarks">For reference only</td></tr>
+<tr><td data-label="Item">Bridesmaids Slippers</td><td data-label="Purpose">Comfortable footwear during wedding preparation / getting-ready photos</td><td data-label="Shouldered By">Catherine</td><td class="num" data-label="Amount">TBA</td><td data-label="Remarks">For reference only</td></tr>
 </tbody></table></div>
 <p class="tiny muted" style="margin-bottom:0">Amounts and DP status are recorded here as a separate reference list only. Catherine's item costs are not yet confirmed.</p>
 </section>
