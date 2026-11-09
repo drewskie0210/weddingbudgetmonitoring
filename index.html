@@ -75,8 +75,8 @@ body.cloud-locked .viewer-entry{display:none}
 }
 body.viewer-mode .accom-edit,body.viewer-mode .personal-edit{display:none!important}
 
-/* Detailed supplier breakdown is visible immediately to admins and hidden in public view. */
-body.viewer-mode #budgetDetails{display:none!important}
+/* Detailed supplier breakdown is visible to both admin and public viewers.
+   Edit/Delete/Add controls are hidden for viewers by existing viewer-mode rules. */
 #budgetDetails{padding:20px}
 @media(max-width:520px){#budgetDetails{padding:15px}}
 </style></head><body class="cloud-locked">
