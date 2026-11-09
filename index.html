@@ -88,6 +88,15 @@ body.viewer-mode .accom-edit,body.viewer-mode .personal-edit{display:none!import
 .vendor-body{padding:14px;overflow-wrap:anywhere}
 .vendor-body h3{margin:0 0 6px;font-size:17px}
 .vendor-meta{color:#586b5f;font-size:13px;margin:5px 0}
+.vendor-status{display:inline-block;border-radius:999px;padding:4px 10px;margin:7px 0;font-size:12px;font-weight:700;background:#edf1ed;color:#57675a}
+.vendor-status.confirmed{background:#d9f5e4;color:#146a3d;border:1px solid #a9dec0}
+.vendor-status.pending{background:#fff3da;color:#85611e}
+.vendor-attachments{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.vendor-attachment{display:inline-flex;align-items:center;gap:5px;background:#f1f6f2;border:1px solid #dce9de;border-radius:9px;padding:7px 9px;font-size:12px;color:#22543c;text-decoration:none;max-width:100%;overflow-wrap:anywhere}
+.vendor-attachment:hover{background:#e0efe4}
+.vendor-attachment-image{width:70px;height:70px;object-fit:cover;border-radius:7px}
+.vendor-existing-file{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:6px 0;font-size:13px}
+.vendor-existing-file input[type=checkbox]{width:auto}
 .vendor-actions{margin-top:12px;display:flex;gap:7px;flex-wrap:wrap}
 .vendor-gallery-note{font-size:12px;color:#60736a}
 body.viewer-mode #vendorAddButton,body.viewer-mode .vendor-actions{display:none!important}
@@ -167,7 +176,7 @@ body.viewer-mode #vendorAddButton,body.viewer-mode .vendor-actions{display:none!
 <div id="vendorsTab" role="tabpanel" aria-labelledby="vendorsTabButton" hidden>
  <section class="panel" id="vendorGallery" aria-label="Wedding vendors and suppliers gallery">
   <div class="top" style="margin-bottom:8px"><div><h2>🖼️ Wedding Vendors & Suppliers</h2><p class="lead">Guide entries mula sa existing Wedding Budget Tracker. I-edit ang vendor details at mag-upload ng actual reference photos. Hindi kasama sa budget computations.</p></div><div class="buttons"><button type="button" class="btn primary" id="vendorAddButton">+ Add Vendor / Item</button></div></div>
-  <p class="vendor-gallery-note">Admin can add, edit or delete entries and upload a single reference image per item. Public viewers can view the gallery only. Small uploaded images are compressed for cloud sync.</p>
+  <p class="vendor-gallery-note">Admin can add, edit or delete entries and upload a single reference image per item. Public viewers can view the gallery only. Images are compressed for cloud sync. Attachments are visible in the public gallery; do not upload sensitive contracts.</p>
   <div id="vendorCards" class="vendor-grid" aria-live="polite"></div>
  </section>
 </div>
@@ -177,9 +186,10 @@ body.viewer-mode #vendorAddButton,body.viewer-mode .vendor-actions{display:none!
 <label class="field" for="vendorService">Item / Service</label><input id="vendorService" maxlength="150" required placeholder="e.g., Wedding Photography & Videography">
 <label class="field" for="vendorState">Status</label><select id="vendorState"><option>Selected</option><option>Confirmed</option><option>Pending</option></select>
 <label class="field" for="vendorNotes">Description / Notes</label><textarea id="vendorNotes" rows="3" maxlength="800" placeholder="Design, inclusions, details..."></textarea>
-<label class="field" for="vendorPhoto">Photo (optional)</label><input id="vendorPhoto" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
-<div class="tiny muted">Best for actual photos of your chosen wedding items. Uploading a new photo replaces the old one; max 5 MB original, compressed automatically. GIF is saved as a still image.</div>
-<label style="display:flex;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="vendorRemovePhoto" style="width:auto">Remove existing photo</label>
+<label class="field" for="vendorAttachments">Add Attachments (multiple photos or PDF)</label><input id="vendorAttachments" type="file" accept="image/jpeg,image/png,image/webp,image/gif,application/pdf" multiple>
+<div class="tiny muted">Up to 4 new files per save; up to 12 files per vendor. Photos automatically resized; PDF files must be 300 KB or less. All attachments are stored with tracker cloud data and may be visible to viewers. Do not upload private contracts, signatures, IDs or sensitive details. For secure private documents, dedicated private storage is needed.</div>
+<div id="vendorExistingAttachments" class="subtle" style="margin-top:10px" hidden></div>
+<label style="display:flex;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="vendorRemovePhoto" style="width:auto">Remove old single photo (if present)</label>
 <div class="buttons" style="margin-top:15px"><button class="btn primary" type="submit" id="vendorSaveButton">Save Vendor</button><button class="btn" type="button" id="vendorCancelButton">Cancel</button></div><p id="vendorError" class="tiny" style="color:#a63d45" role="alert"></p>
 </form></dialog>
 <dialog id="personalEditor"><form id="personalEditForm"><h2 id="personalEditTitle">Edit personally shouldered item</h2><input type="hidden" id="personalEditKind"><input type="hidden" id="personalEditIndex"><label class="field">Room / Item Name</label><input id="personalEditName" maxlength="160" required><label class="field">Purpose</label><textarea id="personalEditPurpose" rows="3" required></textarea><label class="field">Amount (₱) — leave blank if TBA</label><input id="personalEditAmount" type="number" min="0" step="0.01"><div id="personalRoomShares"><div class="two"><div><label class="field">Diane's Share (₱)</label><input id="personalDianeShare" type="number" min="0" step="0.01"></div><div><label class="field">Maricel's Share (₱)</label><input id="personalMaricelShare" type="number" min="0" step="0.01"></div></div><p class="tiny muted">Shares must add up to the total room amount. Existing paid amounts will not be overwritten.</p></div><div id="personalOtherShoulder"><label class="field">Shouldered By</label><input id="personalEditShoulder" maxlength="120"></div><label class="field">Remarks</label><input id="personalEditRemarks" maxlength="240"><div class="buttons" style="margin-top:14px"><button type="submit" class="btn primary">Save Changes</button><button type="button" class="btn" id="closePersonalEditor">Cancel</button></div></form></dialog>
@@ -271,7 +281,8 @@ function normalizeVendors(rows){
   id:String(v.id||id()).slice(0,100),name:String(v.name||'').slice(0,120),
   service:String(v.service||'').slice(0,150),status:['Selected','Confirmed','Pending'].includes(v.status)?v.status:'Selected',
   notes:String(v.notes||'').slice(0,800),
-  photo:typeof v.photo==='string' && /^data:image\/(?:jpeg|png|webp);base64,/.test(v.photo) && v.photo.length<300000?v.photo:''
+  photo:typeof v.photo==='string' && /^data:image\/(?:jpeg|png|webp);base64,/.test(v.photo) && v.photo.length<300000?v.photo:'',
+  attachments:Array.isArray(v.attachments)?v.attachments.slice(0,12).filter(a=>a&&typeof a.data==='string'&&/^data:(?:image\/jpeg|application\/pdf);base64,/.test(a.data)&&a.data.length<440000).map(a=>({name:String(a.name||'Attachment').slice(0,120),type:a.type==='application/pdf'?'application/pdf':'image/jpeg',data:a.data})):[]
  })).filter(v=>v.name&&v.service);
 }
 function fresh(){return applyRequestedBudgetEntries({vendors:[],accommodationRooms:structuredClone(defaultAccommodationRooms),catherineItems:structuredClone(defaultCatherineItems),accommodationPaid:{Diane:4250,Maricel:1500},previousOther:0,pax:150,rate:550,items:defaults.map((x,i)=>({id:'init-'+(i>=10?i+1:i),category:x[0],name:x[1],due:x[2],paid:x[3],note:x[4]})),contributions:startingContributions(),otherExpenses:originalOtherExpenses()})}
@@ -552,14 +563,20 @@ $('reset').onclick=()=>{if(publicReadOnly)return;if(confirm('Reset to the origin
 function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)}$('backup').onclick=()=>download('wedding-fund-backup.json',JSON.stringify(state,null,2),'application/json');$('restore').onclick=()=>$('restoreFile').click();$('restoreFile').onchange=async e=>{if(publicReadOnly)return;try{const file=e.target.files[0];if(!file)return;const data=normalize(JSON.parse(await file.text()));if(confirm('Replace current tracker with backup?')){state=data;updateFields();commit()}}catch(err){alert('Invalid backup: '+err.message)}e.target.value=''};
 $('csv').onclick=()=>{const t=totals();let rows=[['Fund Summary','Value'],['Total sponsor contributions',t.contrib],['Supplier paid',t.paid],['Previous other expenses',state.previousOther],['New other expenses',t.other],['Current cash remaining',t.remaining],[],['Prenup breakdown (reference only)','Amount'],['Sept 14, 2026 actual prenup expense',10576],['Diane extra prenup support outside wedding fund',7000],['Prenup charged to wedding fund (already in Other Expenses)',3576],[],['Category','Expense','Budget','Paid','Balance','Notes']];state.items.forEach(x=>{const d=x.id==='init-2'?money(state.pax*state.rate):x.due;rows.push([categories[x.category],x.name,d,x.paid,d-x.paid,x.note])});rows.push([],['Other expenses','Date','Name','Amount','Note']);state.otherExpenses.forEach(x=>rows.push(['Other expenses',x.date,x.name,x.amount,x.note]));rows.push([],['Sponsor contributions','Date','Sponsor','Amount','Note']);state.contributions.forEach(x=>rows.push(['Sponsor contributions',x.date,x.name,x.amount,x.note]));download('wedding-fund-tracker.csv','\ufeff'+rows.map(row=>row.map(x=>'"'+String(x??'').replaceAll('"','""')+'"').join(',')).join('\r\n'),'text/csv')};
 // Gallery is informational; it is never included in totals() or expense/payment arrays.
-function renderVendorGallery(){
+ function renderVendorGallery(){
  const target=$('vendorCards');if(!target)return;
  const vendors=state.vendors||[];
- target.innerHTML=vendors.length?vendors.map(v=>`<article class="vendor-card">
- ${v.photo?`<img class="vendor-thumb" src="${v.photo}" alt="${esc(v.service)} – ${esc(v.name)}" loading="lazy">`:'<div class="vendor-placeholder">📷 No photo uploaded yet</div>'}
+ target.innerHTML=vendors.length?vendors.map(v=>{
+ const attachments=Array.isArray(v.attachments)?v.attachments:[];
+ const cover=v.photo||attachments.find(a=>a.type.startsWith('image/'))?.data;
+ const statusClass=v.status==='Confirmed'?'confirmed':v.status==='Pending'?'pending':'';
+ return `<article class="vendor-card">
+ ${cover?`<img class="vendor-thumb" src="${cover}" alt="${esc(v.service)} – ${esc(v.name)}" loading="lazy">`:'<div class="vendor-placeholder">📎 No photo uploaded yet</div>'}
  <div class="vendor-body"><h3>${esc(v.name)}</h3><div><b>${esc(v.service)}</b></div>
- <div class="vendor-meta">Status: ${esc(v.status)}</div>${v.notes?`<p class="vendor-meta">${esc(v.notes)}</p>`:''}
- <div class="vendor-actions"><button class="btn small" type="button" data-vendor-edit="${esc(v.id)}">Edit</button><button class="btn small danger" type="button" data-vendor-delete="${esc(v.id)}">Delete</button></div></div></article>`).join(''):'<div class="subtle">Wala pang vendor photos o items. Admin can select <b>+ Add Vendor / Item</b> to start the gallery.</div>';
+ <span class="vendor-status ${statusClass}">${v.status==='Confirmed'?'✓ ':''}${esc(v.status)}</span>${v.notes?`<p class="vendor-meta">${esc(v.notes)}</p>`:''}
+ ${attachments.length?`<div class="vendor-meta"><b>Attachments (${attachments.length})</b></div><div class="vendor-attachments">${attachments.map((a,i)=>`<a class="vendor-attachment" href="${a.data}" download="${esc(a.name)}" title="Open or download ${esc(a.name)}">${a.type==='application/pdf'?'📄':'🖼️'} ${esc(a.name)}</a>`).join('')}</div>`:''}
+ <div class="vendor-actions"><button class="btn small" type="button" data-vendor-edit="${esc(v.id)}">Edit</button><button class="btn small danger" type="button" data-vendor-delete="${esc(v.id)}">Delete</button></div></div></article>`;
+ }).join(''):'<div class="subtle">Wala pang vendor photos o items. Admin can select <b>+ Add Vendor / Item</b> to start the gallery.</div>';
 }
 function openVendorEditor(v){
  if(publicReadOnly)return;
@@ -567,6 +584,9 @@ function openVendorEditor(v){
  $('vendorName').value=v?.name||'';$('vendorService').value=v?.service||'';
  $('vendorState').value=v?.status||'Selected';$('vendorNotes').value=v?.notes||'';
  $('vendorRemovePhoto').checked=false;$('vendorEditorTitle').textContent=v?'Edit Vendor / Item':'Add Vendor / Item';
+ const files=v?.attachments||[];
+ const existing=$('vendorExistingAttachments');existing.hidden=!files.length;
+ existing.innerHTML=files.length?'<b>Current attachments — check to remove:</b>'+files.map((f,i)=>`<label class="vendor-existing-file"><span>${f.type==='application/pdf'?'📄':'🖼️'} ${esc(f.name)}</span><span><input type="checkbox" data-attachment-remove="${i}"> Remove</span></label>`).join(''):'';
  $('vendorEditor').showModal();
 }
 $('vendorAddButton').onclick=()=>openVendorEditor(null);
@@ -575,13 +595,13 @@ $('vendorCards').onclick=e=>{
  if(publicReadOnly)return;
  const edit=e.target.closest('[data-vendor-edit]'),del=e.target.closest('[data-vendor-delete]');
  if(edit){openVendorEditor((state.vendors||[]).find(v=>v.id===edit.dataset.vendorEdit));}
- else if(del&&confirm('Delete this vendor / item and its photo?')){
+ else if(del&&confirm('Delete this vendor / item and its attachments?')){
   state.vendors=state.vendors.filter(v=>v.id!==del.dataset.vendorDelete);commit();
  }
 };
 async function compressVendorPhoto(file){
  if(file.size>5*1024*1024)throw Error('Photo must be 5 MB or smaller.');
- if(!/^image\/(jpeg|png|webp|gif)$/.test(file.type))throw Error('Please choose a JPG, PNG, WebP or GIF image.');
+ if(!/^image\/(jpeg|png|webp|gif)$/.test(file.type))throw Error('Choose JPG, PNG, WebP or GIF images.');
  const bitmap=await createImageBitmap(file);
  try{
   const maxSide=700,scale=Math.min(1,maxSide/Math.max(bitmap.width,bitmap.height));
@@ -591,6 +611,15 @@ async function compressVendorPhoto(file){
   throw Error('Photo is still too large. Try a simpler or smaller image.');
  }finally{bitmap.close?.();}
 }
+function fileAsDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(Error('Unable to read PDF.'));r.readAsDataURL(file);});}
+async function readVendorAttachment(file){
+ if(file.type==='application/pdf'){
+  if(file.size>300*1024)throw Error(file.name+': PDF must be 300 KB or smaller for this tracker.');
+  return {name:file.name.slice(0,120),type:'application/pdf',data:await fileAsDataUrl(file)};
+ }
+ const data=await compressVendorPhoto(file);
+ return {name:file.name.slice(0,120),type:'image/jpeg',data};
+}
 $('vendorForm').onsubmit=async e=>{
  e.preventDefault();if(publicReadOnly)return;
  const name=$('vendorName').value.trim(),service=$('vendorService').value.trim();if(!name||!service)return;
@@ -598,16 +627,20 @@ $('vendorForm').onsubmit=async e=>{
  if(!old&&state.vendors.length>=30){$('vendorError').textContent='Maximum 30 gallery items.';return;}
  const btn=$('vendorSaveButton');btn.disabled=true;$('vendorError').textContent='';
  try{
-  let photo=$('vendorRemovePhoto').checked?'':(old?.photo||'');
-  const f=$('vendorPhoto').files[0];if(f)photo=await compressVendorPhoto(f);
-  const row={id:old?.id||id(),name,service,status:$('vendorState').value,notes:$('vendorNotes').value.trim(),photo};
-  // Avoid excessively large snapshots that may exceed the configured cloud row limits.
+  const photo=$('vendorRemovePhoto').checked?'':(old?.photo||'');
+  const removed=new Set([...$('vendorExistingAttachments').querySelectorAll('[data-attachment-remove]:checked')].map(x=>Number(x.dataset.attachmentRemove)));
+  const attachments=(old?.attachments||[]).filter((_,i)=>!removed.has(i));
+  const uploads=[...$('vendorAttachments').files];
+  if(uploads.length>4)throw Error('Choose up to 4 new attachments per save.');
+  if(attachments.length+uploads.length>12)throw Error('Maximum 12 attachments per vendor.');
+  for(const f of uploads)attachments.push(await readVendorAttachment(f));
+  const row={id:old?.id||id(),name,service,status:$('vendorState').value,notes:$('vendorNotes').value.trim(),photo,attachments};
   const others=state.vendors.filter(v=>v.id!==row.id);
-  if(JSON.stringify([...others,row]).length>1800000)throw Error('Gallery storage is full. Remove some photos before adding more.');
+  if(JSON.stringify([...others,row]).length>1800000)throw Error('Gallery cloud-data capacity reached. Remove attachments or use smaller files.');
   if(old)state.vendors=state.vendors.map(v=>v.id===old.id?row:v);
   else state.vendors.push(row);
   $('vendorEditor').close();commit();
- }catch(err){$('vendorError').textContent=err.message||'Could not save image.';}
+ }catch(err){$('vendorError').textContent=err.message||'Could not save attachment.';}
  finally{btn.disabled=false;}
 };
 updateFields();render();
