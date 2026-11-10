@@ -380,7 +380,18 @@ let state;try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLDKEY);
  // Convert the original unexplained ₱8,846 to two named expenses once, preserving total spending and all new records.
  if(money(state.previousOther)===8846 && !state.otherExpenses.some(x=>x.id==='opening-mamanhikan'||x.id==='opening-prenup-loan')){state.previousOther=0;state.otherExpenses=[...originalOtherExpenses(),...state.otherExpenses]}
  // Apply Kuya Jeck's direct ₱3,000 prenup support once; do not count it as wedding-fund cash.
- for(const x of state.otherExpenses){if(x.id==='opening-prenup-loan'){x.name='Prenup — wedding fund share';x.date=x.date||'2026-09-14';if(money(x.amount)===3576)x.amount=576;if(money(x.amount)===576)x.note='Sept 14, 2026: full ₱10,576; Diane paid ₱7,000 and Kuya Jeck paid ₱3,000 separately; ₱576 from wedding fund'}}
+ for(const x of state.otherExpenses){
+   // Correct the specifically identified historical prenup wedding-fund entry, including older imported copies.
+   // Do not touch unrelated expenses or automatically add a second prenup deduction.
+   const legacyPrenup = x.id==='opening-prenup-loan' ||
+     (x.date==='2026-09-14' && /^prenup\s*[—–-]\s*wedding fund share$/i.test(String(x.name||'').trim()));
+   if(legacyPrenup){
+     x.name='Prenup — wedding fund share';
+     x.date=x.date||'2026-09-14';
+     if(money(x.amount)===3576)x.amount=576;
+     if(money(x.amount)===576)x.note='Sept 14, 2026: total ₱10,576; Diane paid ₱7,000 and Kuya Jeck paid ₱3,000 personally (outside wedding fund); only ₱576 charged to wedding fund.';
+   }
+ }
  // One-time migration for browser data: make Eric's recorded contributions total ₱75,000.
  // Add only the difference rather than duplicating an existing Eric contribution.
  if(!state.erick75000Revision){
