@@ -24,37 +24,37 @@ body.cloud-locked .viewer-entry{display:none}
 
 /* Mobile-friendly personally shouldered cards, separate from budget calculations. */
 @media(max-width:640px){
-  .wrap{padding:14px 10px 50px}
-  .top{align-items:stretch}
-  .buttons{width:100%}
-  .buttons .btn{flex:1 1 auto}
-  .line{flex-wrap:wrap;gap:4px 12px}
-  .line strong{white-space:normal;text-align:right;margin-left:auto}
-  #personalShoulderedReference{padding:15px}
-  #personalShoulderedReference .tag{max-width:100%;white-space:normal}
-  #personalShoulderedReference .tablewrap{overflow:visible;border:0;margin-top:10px}
-  #personalShoulderedReference .reference-mobile-table,
-  #personalShoulderedReference .reference-mobile-table tbody,
-  #personalShoulderedReference .reference-mobile-table tr,
-  #personalShoulderedReference .reference-mobile-table td{display:block;width:100%;min-width:0}
-  #personalShoulderedReference .reference-mobile-table thead{display:none}
-  #personalShoulderedReference .reference-mobile-table tr{margin-bottom:12px;padding:8px 12px;border:1px solid #dde8df;border-radius:12px;background:#fbfdfb}
-  #personalShoulderedReference .reference-mobile-table td{display:grid;grid-template-columns:minmax(90px,36%) minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid #edf1ed;text-align:left!important;white-space:normal;overflow-wrap:anywhere;align-items:start}
-  #personalShoulderedReference .reference-mobile-table td:last-child{border-bottom:0}
-  #personalShoulderedReference .reference-mobile-table td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#65766f;white-space:normal}
-  #personalShoulderedReference .reference-mobile-table .reference-total-row{background:#eaf4ed}
-  .tablewrap:not(#personalShoulderedReference .tablewrap){-webkit-overflow-scrolling:touch}
-  .card{min-width:0}
+.wrap{padding:14px 10px 50px}
+.top{align-items:stretch}
+.buttons{width:100%}
+.buttons .btn{flex:1 1 auto}
+.line{flex-wrap:wrap;gap:4px 12px}
+.line strong{white-space:normal;text-align:right;margin-left:auto}
+#personalShoulderedReference{padding:15px}
+#personalShoulderedReference .tag{max-width:100%;white-space:normal}
+#personalShoulderedReference .tablewrap{overflow:visible;border:0;margin-top:10px}
+#personalShoulderedReference .reference-mobile-table,
+#personalShoulderedReference .reference-mobile-table tbody,
+#personalShoulderedReference .reference-mobile-table tr,
+#personalShoulderedReference .reference-mobile-table td{display:block;width:100%;min-width:0}
+#personalShoulderedReference .reference-mobile-table thead{display:none}
+#personalShoulderedReference .reference-mobile-table tr{margin-bottom:12px;padding:8px 12px;border:1px solid #dde8df;border-radius:12px;background:#fbfdfb}
+#personalShoulderedReference .reference-mobile-table td{display:grid;grid-template-columns:minmax(90px,36%) minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid #edf1ed;text-align:left!important;white-space:normal;overflow-wrap:anywhere;align-items:start}
+#personalShoulderedReference .reference-mobile-table td:last-child{border-bottom:0}
+#personalShoulderedReference .reference-mobile-table td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#65766f;white-space:normal}
+#personalShoulderedReference .reference-mobile-table .reference-total-row{background:#eaf4ed}
+.tablewrap:not(#personalShoulderedReference .tablewrap){-webkit-overflow-scrolling:touch}
+.card{min-width:0}
 }
 
 /* Editable admin payment schedule: independent from wedding fund totals. */
 @media(max-width:640px){
- #paymentSchedule .tablewrap{overflow:visible;border:0}
- #paymentSchedule table,#paymentSchedule tbody,#paymentSchedule tr,#paymentSchedule td{display:block;width:100%;min-width:0}
- #paymentSchedule thead{display:none}
- #paymentSchedule tr{border:1px solid #dde8df;border-radius:12px;margin:0 0 10px;padding:7px 12px;background:#fbfdfb}
- #paymentSchedule td{display:grid;grid-template-columns:minmax(85px,34%) 1fr;gap:9px;text-align:left!important;white-space:normal;overflow-wrap:anywhere;padding:8px 0}
- #paymentSchedule td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#65766f}
+#paymentSchedule .tablewrap{overflow:visible;border:0}
+#paymentSchedule table,#paymentSchedule tbody,#paymentSchedule tr,#paymentSchedule td{display:block;width:100%;min-width:0}
+#paymentSchedule thead{display:none}
+#paymentSchedule tr{border:1px solid #dde8df;border-radius:12px;margin:0 0 10px;padding:7px 12px;background:#fbfdfb}
+#paymentSchedule td{display:grid;grid-template-columns:minmax(85px,34%) 1fr;gap:9px;text-align:left!important;white-space:normal;overflow-wrap:anywhere;padding:8px 0}
+#paymentSchedule td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#65766f}
 }
 
 .site-support-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:13px 0 16px}.site-support-summary .card strong{font-size:clamp(19px,2.4vw,27px)}@media(max-width:760px){.site-support-summary{grid-template-columns:1fr}}
@@ -67,17 +67,17 @@ body.cloud-locked .viewer-entry{display:none}
 @media print{.tracker-tabs{display:none!important}#budgetTab[hidden],#scheduleTab[hidden],#vendorsTab[hidden]{display:block!important}}
 
 @media(max-width:760px){
- #actualSupportPanel .tablewrap{overflow:visible;border:0}
- #actualSupportPanel .support-table,#actualSupportPanel .support-table tbody,#actualSupportPanel .support-table tr,#actualSupportPanel .support-table td{display:block;width:100%;min-width:0}
- #actualSupportPanel .support-table thead{display:none}
- #actualSupportPanel .support-table tr{padding:9px 12px;margin-bottom:10px;border:1px solid #dde8df;border-radius:10px;background:white}
- #actualSupportPanel .support-table td{display:flex;justify-content:space-between;gap:12px;padding:7px 0;text-align:right;white-space:normal;overflow-wrap:anywhere}
- #actualSupportPanel .support-table td::before{content:attr(data-label);font-size:12px;color:#65766f;font-weight:650;text-align:left}
+#actualSupportPanel .tablewrap{overflow:visible;border:0}
+#actualSupportPanel .support-table,#actualSupportPanel .support-table tbody,#actualSupportPanel .support-table tr,#actualSupportPanel .support-table td{display:block;width:100%;min-width:0}
+#actualSupportPanel .support-table thead{display:none}
+#actualSupportPanel .support-table tr{padding:9px 12px;margin-bottom:10px;border:1px solid #dde8df;border-radius:10px;background:white}
+#actualSupportPanel .support-table td{display:flex;justify-content:space-between;gap:12px;padding:7px 0;text-align:right;white-space:normal;overflow-wrap:anywhere}
+#actualSupportPanel .support-table td::before{content:attr(data-label);font-size:12px;color:#65766f;font-weight:650;text-align:left}
 }
 body.viewer-mode .accom-edit,body.viewer-mode .personal-edit{display:none!important}
 
 /* Detailed supplier breakdown is visible to both admin and public viewers.
-   Edit/Delete/Add controls are hidden for viewers by existing viewer-mode rules. */
+Edit/Delete/Add controls are hidden for viewers by existing viewer-mode rules. */
 #budgetDetails{padding:20px}
 @media(max-width:520px){#budgetDetails{padding:15px}}
 
@@ -183,7 +183,7 @@ body.viewer-mode .expense-note-private,body.viewer-mode .admin-private{display:n
 </section>
 <section aria-label="Admin Quick Add" class="panel" id="quickAddPanel"><div class="top" style="margin-bottom:8px"><div><h2>➕ Add New Item or Expense</h2><p class="lead" style="margin:4px 0 0">Para sa bagong supplier/budget item o dagdag na gastos na nabayaran na.</p></div></div><div class="two"><div class="subtle"><b>Bagong Budget Item</b><p class="tiny muted">Ilagay ang item name, category, estimated price at amount paid (kung meron).</p><button class="btn primary" id="quickBudgetAdd" type="button">+ Add New Item</button></div><div class="subtle"><b>Additional Expense</b><p class="tiny muted">Ilagay ang expense name, amount, date at optional note. Mababawas ito sa remaining cash.</p><button class="btn primary" id="quickExpenseAdd" type="button">+ Add Expense</button></div></div></section>
 <section class="panel"><h2>💰 Wedding Fund Breakdown</h2><p class="lead">Ang wedding cash fund ay galing sa mga naka-record na cash contributions. Editable at puwedeng i-delete ang bawat ambag sa Sponsor Contributions section.</p><div><label class="field">Total Cash Contributions</label><div class="big" id="contributionTotal">₱95,000.00</div><div class="tiny muted">Automatic galing sa sponsor records.</div></div><div class="line"><span>All Cash Contributions (including original)</span><strong id="fundStart"></strong></div><div class="line"><span>− Supplier payments / down (from wedding budget list)</span><strong id="supplierDeduct"></strong></div><div class="line" id="previousDeductRow"><span>− Other expenses already spent</span><strong id="previousDeduct"></strong></div><div class="line"><span>− Other Expenses<span class="tiny muted" style="display:block;margin-top:3px">Pamamanhikan at prenup expenses (wedding fund share).</span></span><strong id="otherDeduct"></strong></div><div class="line"><b>Current Remaining Fund</b><strong id="fundLeftLine" style="color:#176d46"></strong></div><div class="warning">Ang mga “Amount Paid” sa Wedding Budget ay awtomatikong ibinabawas sa fund. Huwag nang idagdag ulit sa Other Expenses ang parehong down payment. Kung may supplier payment na hindi galing sa fund na ito, kailangang i-adjust ang tracking para sa ibang pinanggalingan ng bayad.</div></section>
-<div class="two"><section class="panel"><h2>👥 Catering Pax Control</h2><p class="lead">Magkakahiwalay ang Catering, Reception at Lights &amp; Sound sa Base Package. Catering = bilang ng pax × rate.</p><div class="pax-editor-controls"><label class="field">Number of pax</label><input id="pax" max="10000" min="0" type="number"/><input id="paxSlider" max="300" min="0" type="range"/><label class="field">Catering rate per pax (₱)</label><input id="rate" min="0" step="0.01" type="number"/></div><div aria-label="Catering guest count and rate" class="pax-public-summary"><div class="line"><span>Number of pax</span><strong id="publicPaxCount">150 pax</strong></div><div class="line"><span>Catering rate per pax</span><strong id="publicPaxRate">₱550.00</strong></div></div><div class="line"><span>Catering adjusted amount</span><strong id="cateringCost"></strong></div><div class="tiny muted">Base Package = Catering (pax × rate) + Reception (₱9,000) + Lights &amp; Sound (₱6,000). Pagbabago sa pax ay hindi agad cash expense.</div></section><section class="panel"><h2>🧾 Other Wedding Expenses</h2><p class="lead">Mga gastos na wala sa wedding supplier payment list. Ang bagong expense ay mababawas agad sa cash.</p><form id="otherForm"><label class="field">Expense description</label><input id="otherName" placeholder="Transport, food, supplies…" required=""/><div class="two"><div><label class="field">Amount (₱)</label><input id="otherAmount" min="0.01" required="" step="0.01" type="number"/></div><div><label class="field">Date</label><input id="otherDate" required="" type="date"/></div></div><label class="field">Notes (optional)</label><input id="otherNote" placeholder="Details"/><button class="btn primary" style="margin-top:12px" type="submit">+ Save Additional Expense</button></form></section></div>
+<div class="two"><section class="panel"><h2>👥 Catering Pax Control</h2><p class="lead">Magkakahiwalay ang Catering, Reception at Lights &amp; Sound sa Base Package. Adult catering = adult pax × adult rate; may hiwalay na 7 kids × ₱250.</p><div class="pax-editor-controls"><label class="field">Number of adult pax</label><input id="pax" max="10000" min="0" type="number"/><input id="paxSlider" max="300" min="0" type="range"/><label class="field">Catering rate per pax (₱)</label><input id="rate" min="0" step="0.01" type="number"/></div><div aria-label="Catering guest count and rate" class="pax-public-summary"><div class="line"><span>Number of adult pax</span><strong id="publicPaxCount">150 pax</strong></div><div class="line"><span>Catering rate per pax</span><strong id="publicPaxRate">₱550.00</strong></div></div><div class="line"><span>Adult catering amount</span><strong id="cateringCost"></strong></div><div class="line"><span>Kids catering (7 kids × ₱250)</span><strong>₱1,750.00</strong></div><div class="line"><b>Total catering (adults + kids)</b><strong id="cateringCombined"></strong></div><div class="tiny muted">Base Package = Adult catering + Kids catering (₱1,750) + Reception (₱9,000) + Lights &amp; Sound (₱6,000). Pagbabago sa pax ay hindi agad cash expense.</div></section><section class="panel"><h2>🧾 Other Wedding Expenses</h2><p class="lead">Mga gastos na wala sa wedding supplier payment list. Ang bagong expense ay mababawas agad sa cash.</p><form id="otherForm"><label class="field">Expense description</label><input id="otherName" placeholder="Transport, food, supplies…" required=""/><div class="two"><div><label class="field">Amount (₱)</label><input id="otherAmount" min="0.01" required="" step="0.01" type="number"/></div><div><label class="field">Date</label><input id="otherDate" required="" type="date"/></div></div><label class="field">Notes (optional)</label><input id="otherNote" placeholder="Details"/><button class="btn primary" style="margin-top:12px" type="submit">+ Save Additional Expense</button></form></section></div>
 
 <section class="panel" id="budgetDetails"><h2>📋 Wedding Budget &amp; Supplier Payments</h2><div><div class="top"><div><h2 class="budget-details-inner-title">Detailed Supplier Payments</h2><span class="muted tiny">Edit the paid amount when you make a down payment: it updates both supplier balance and available cash.</span></div><button class="btn primary" id="addItem">+ Add New Item</button></div><label class="field" for="search">Search expenses</label><input id="search" placeholder="Search supplier or expense…"/><p class="tiny muted">Ang ₱0 Total Price ay ipapakita bilang TBC (To Be Confirmed); hindi ibig sabihin na libre. Ang green na Confirmed ay final na presyo, hindi nangangahulugang fully paid. Ang optional amounts ay estimates at hindi cash expenses hangga’t walang bayad.</p><div aria-label="Filter wedding supplier payment status" class="payment-filter-bar" role="group"><span class="tiny muted" style="margin-right:4px">Show:</span><button aria-pressed="true" class="payment-filter active" data-budget-filter="all" type="button">All</button><button aria-pressed="false" class="payment-filter" data-budget-filter="unpaid" type="button">Unpaid</button><button aria-pressed="false" class="payment-filter" data-budget-filter="partial" type="button">Partially Paid</button><button aria-pressed="false" class="payment-filter" data-budget-filter="paid" type="button">Fully Paid</button><button aria-pressed="false" class="payment-filter" data-budget-filter="tba" type="button">Price TBC</button><button aria-pressed="false" class="payment-filter" data-budget-filter="confirmed" type="button">Confirmed Price</button></div><p class="tiny muted" id="budgetFilterCount" style="margin:0 0 8px"></p><div id="groups"></div></div></section><details class="history-collapse" id="sponsorManageCollapse"><summary>💝 Manage Sponsor Contributions <span class="history-toggle"></span></summary><div class="history-collapse-body"><section class="panel"><h2>💝 Sponsor Cash Contributions</h2><p class="lead">Manage cash contributions and sponsor names here. Puwedeng magdagdag ng bagong sponsor o mag-edit ng pangalan at ambag. Ang mga cash contribution entries lang dito ang bibilangin sa wedding cash fund.</p><div class="subtle" id="actualSupportPanel" style="margin:12px 0 16px">
 <h3 style="margin:0 0 5px">Actual Contributions &amp; Personal Payments (Paid Only)</h3>
@@ -263,171 +263,177 @@ function originalOtherExpenses(){return [{id:'opening-mamanhikan',name:'Pamamanh
 // Initial Tab 3 guide cards based only on services/items already recorded in the tracker.
 // These are NOT payments, do not affect budget totals, and are imported once.
 function seedVendorGuides(a){
- if(!Array.isArray(a.vendors))a.vendors=[];
- // Ensure Lechon is present in Tab 3 even for previously seeded cloud/backup records.
- // Never duplicate an existing Lechon gallery card or alter the financial budget.
- const existingLechon=a.vendors.some(v=>/lechon/i.test(String(v.service||'')) || /lechon/i.test(String(v.name||'')));
- const budgetHasLechon=Array.isArray(a.items)&&a.items.some(x=>/lechon/i.test(String(x.name||'')));
- if(budgetHasLechon&&!existingLechon&&a.vendors.length<30){
-   a.vendors.push({id:'guide-2026-lechon-baboy',name:'Lechon Supplier – To Confirm',service:'Lechon Baboy (Good for 50 pax)',status:'Pending',notes:'Supplier to confirm. ₱12,000 listed in the wedding budget; additional pax pending decision. Add supplier photos or documents here.',photo:'',attachments:[]});
- }
- if(a.vendorGuidesSeeded2026)return a;
- const listed=(pattern)=>a.items.some(x=>pattern.test(x.name));
- const guides=[
-  {test:/Reception|Catering Adult|Lights & Sound/i,name:'Web Events Place',service:'Reception, Catering & Lights / Sound',notes:'Venue / base package; verify service inclusions and add reference photos.'},
-  {test:/Photo\/Videographer.*Great Creation/i,name:'Great Creation',service:'Wedding Photography & Videography',notes:'Prenup and wedding-day photo/video.'},
-  {test:/Photobooth.*Great Creation/i,name:'Great Creation',service:'Wedding Photobooth',notes:'3 hours unlimited; laminated prints (per tracker).'},
-  {test:/Makeup Artist.*FLCTY/i,name:'FLCTY MHU',service:'Bridal Hair & Makeup',notes:'Prenup and wedding-day HMUA.'},
-  {test:/OTD Coordinator.*FLCTY/i,name:'FLCTY MHU',service:'On-the-Day Wedding Coordination',notes:'Wedding-day coordinator.'},
-  {test:/Emcee.*Rodel Usana/i,name:'Rodel Usana',service:'Wedding Host / Emcee',notes:'Host listed in wedding budget.'},
-  {test:/^Cake$/i,name:'Cake Vendor – To Confirm',service:'Wedding Cake',notes:'Add actual cake vendor name and selected cake design photo.'},
-  {test:/Florist for Entourage/i,name:'Florist – To Confirm',service:'Entourage Flowers / Florist',notes:'Add florist name and actual flower arrangement references.'},
-  {test:/Garden Ceremony/i,name:'Ceremony Supplier – To Confirm',service:'Garden Ceremony Setup',notes:'Ceremony setup and decorations.'},
-  {test:/Lechon/i,name:'Lechon Supplier – To Confirm',service:'Lechon',notes:'Supplier name / details to confirm.'},
-  {test:/^Ring$/i,name:'Ring Supplier – To Confirm',service:'Wedding Rings',notes:'Design and supplier to confirm; current budget is tentative.'},
-  {test:/Pica-Pica/i,name:'Pica-Pica Supplier – To Confirm',service:'Pica-Pica',notes:'Optional item; price and supplier not yet confirmed.'},
-  {test:/Mobile Bar \/ Cocktail Drinks/i,name:'Mobile Bar – To Confirm',service:'Mobile Bar / Cocktail Drinks',notes:'Optional service; supplier not yet confirmed.'}
- ];
- const known=a.vendors;
- for(const g of guides){
-  if(!listed(g.test))continue;
-  if(known.some(v=>v.service.toLowerCase()===g.service.toLowerCase() || (/lechon/i.test(g.service)&&/lechon/i.test(v.service))))continue;
-  if(known.length>=30)break;
-  known.push({id:'guide-2026-'+g.service.toLowerCase().replace(/[^a-z0-9]+/g,'-'),name:g.name,service:g.service,status:g.name.includes('To Confirm')?'Pending':'Selected',notes:g.notes,photo:''});
- }
- a.vendorGuidesSeeded2026=true;
- return a;
+if(!Array.isArray(a.vendors))a.vendors=[];
+// Ensure Lechon is present in Tab 3 even for previously seeded cloud/backup records.
+// Never duplicate an existing Lechon gallery card or alter the financial budget.
+const existingLechon=a.vendors.some(v=>/lechon/i.test(String(v.service||'')) || /lechon/i.test(String(v.name||'')));
+const budgetHasLechon=Array.isArray(a.items)&&a.items.some(x=>/lechon/i.test(String(x.name||'')));
+if(budgetHasLechon&&!existingLechon&&a.vendors.length<30){
+a.vendors.push({id:'guide-2026-lechon-baboy',name:'Lechon Supplier – To Confirm',service:'Lechon Baboy (Good for 50 pax)',status:'Pending',notes:'Supplier to confirm. ₱12,000 listed in the wedding budget; additional pax pending decision. Add supplier photos or documents here.',photo:'',attachments:[]});
+}
+if(a.vendorGuidesSeeded2026)return a;
+const listed=(pattern)=>a.items.some(x=>pattern.test(x.name));
+const guides=[
+{test:/Reception|Catering Adult|Lights & Sound/i,name:'Web Events Place',service:'Reception, Catering & Lights / Sound',notes:'Venue / base package; verify service inclusions and add reference photos.'},
+{test:/Photo\/Videographer.*Great Creation/i,name:'Great Creation',service:'Wedding Photography & Videography',notes:'Prenup and wedding-day photo/video.'},
+{test:/Photobooth.*Great Creation/i,name:'Great Creation',service:'Wedding Photobooth',notes:'3 hours unlimited; laminated prints (per tracker).'},
+{test:/Makeup Artist.*FLCTY/i,name:'FLCTY MHU',service:'Bridal Hair & Makeup',notes:'Prenup and wedding-day HMUA.'},
+{test:/OTD Coordinator.*FLCTY/i,name:'FLCTY MHU',service:'On-the-Day Wedding Coordination',notes:'Wedding-day coordinator.'},
+{test:/Emcee.*Rodel Usana/i,name:'Rodel Usana',service:'Wedding Host / Emcee',notes:'Host listed in wedding budget.'},
+{test:/^Cake$/i,name:'Cake Vendor – To Confirm',service:'Wedding Cake',notes:'Add actual cake vendor name and selected cake design photo.'},
+{test:/Florist for Entourage/i,name:'Florist – To Confirm',service:'Entourage Flowers / Florist',notes:'Add florist name and actual flower arrangement references.'},
+{test:/Garden Ceremony/i,name:'Ceremony Supplier – To Confirm',service:'Garden Ceremony Setup',notes:'Ceremony setup and decorations.'},
+{test:/Lechon/i,name:'Lechon Supplier – To Confirm',service:'Lechon',notes:'Supplier name / details to confirm.'},
+{test:/^Ring$/i,name:'Ring Supplier – To Confirm',service:'Wedding Rings',notes:'Design and supplier to confirm; current budget is tentative.'},
+{test:/Pica-Pica/i,name:'Pica-Pica Supplier – To Confirm',service:'Pica-Pica',notes:'Optional item; price and supplier not yet confirmed.'},
+{test:/Mobile Bar \/ Cocktail Drinks/i,name:'Mobile Bar – To Confirm',service:'Mobile Bar / Cocktail Drinks',notes:'Optional service; supplier not yet confirmed.'}
+];
+const known=a.vendors;
+for(const g of guides){
+if(!listed(g.test))continue;
+if(known.some(v=>v.service.toLowerCase()===g.service.toLowerCase() || (/lechon/i.test(g.service)&&/lechon/i.test(v.service))))continue;
+if(known.length>=30)break;
+known.push({id:'guide-2026-'+g.service.toLowerCase().replace(/[^a-z0-9]+/g,'-'),name:g.name,service:g.service,status:g.name.includes('To Confirm')?'Pending':'Selected',notes:g.notes,photo:''});
+}
+a.vendorGuidesSeeded2026=true;
+return a;
 }
 // Add the requested wedding-budget entries once, including for saved/cloud records.
 // Preserve existing payments, prevent duplicate Lechon expenses, and keep new items editable.
 // One-time addition to Tab 2; preserves admin edits and does not affect wedding-fund totals.
 function ensureNovadeciSchedule(a){
- if(a.novadeciScheduleDec2026Added)return a;
- if(!Array.isArray(a.paymentSchedule))a.paymentSchedule=[];
- const alreadyListed=a.paymentSchedule.some(x=>/novadeci/i.test(String(x.vendor||''))&&x.date==='2026-12-23'&&(/50%|accommodation|room/i.test(String(x.details||''))||money(x.amount)===5750));
- if(!alreadyListed)a.paymentSchedule.push({id:'schedule-novadeci-balance-2026',date:'2026-12-23',vendor:'Novadeci',amount:5750,details:'Remaining 50% Accommodation Balance (personally shouldered by Diane & Maricel; outside wedding fund)',status:'Scheduled'});
- a.novadeciScheduleDec2026Added=true;
- return a;
+if(a.novadeciScheduleDec2026Added)return a;
+if(!Array.isArray(a.paymentSchedule))a.paymentSchedule=[];
+const alreadyListed=a.paymentSchedule.some(x=>/novadeci/i.test(String(x.vendor||''))&&x.date==='2026-12-23'&&(/50%|accommodation|room/i.test(String(x.details||''))||money(x.amount)===5750));
+if(!alreadyListed)a.paymentSchedule.push({id:'schedule-novadeci-balance-2026',date:'2026-12-23',vendor:'Novadeci',amount:5750,details:'Remaining 50% Accommodation Balance (personally shouldered by Diane & Maricel; outside wedding fund)',status:'Scheduled'});
+a.novadeciScheduleDec2026Added=true;
+return a;
 }
 function applyRequestedBudgetEntries(a){
- ensureNovadeciSchedule(a);
-  if(a.requestedBudgetEntriesNov2026)return seedVendorGuides(a);
-  const findByName=(names)=>a.items.find(x=>names.includes(x.name.trim().toLowerCase()));
-  let lechon=findByName(['lechon baboy','lechon']);
-  if(!lechon){lechon={id:'requested-lechon-baboy-2026',category:'other',name:'Lechon Baboy',due:12000,paid:0,note:''};a.items.push(lechon)}
-  lechon.category='other';lechon.name='Lechon Baboy';lechon.due=12000;
-  lechon.note='₱12,000 (50 pax) | Pending Decision on Additional Pax';
-  let meals=findByName(['wedding prep meals & transportation']);
-  if(!meals){meals={id:'requested-prep-meals-transport-2026',category:'other',name:'Wedding Prep Meals & Transportation',due:0,paid:0,note:''};a.items.push(meals)}
-  meals.category='other';
-  meals.note='7:00 AM Onwards – Breakfast & Lunch for Family, Entourage, HMUA, Coordinators & Photo/Video Team. Transportation for HMUA, Coordinators & Photo/Video Team Only. Amount TBD (Actual Cost at Novadeci).';
-  let gown=findByName(['wedding gown']);
-  if(!gown){gown={id:'requested-wedding-gown-2026',category:'other',name:'Wedding Gown',due:0,paid:0,note:''};a.items.push(gown)}
-  gown.category='other';gown.due=0;gown.note='Shouldered by the Bride';
-  a.requestedBudgetEntriesNov2026=true;
-  return seedVendorGuides(a);
+ensureNovadeciSchedule(a);
+// Add kids catering as its own base-package budget line, once per saved/cloud tracker.
+// This is a planned supplier cost, not an actual payment or cash deduction.
+if(!a.items.some(x=>x.id==='catering-kids-7-2026'||/^Catering Kids \(7 pax × ₱250\)$/i.test(String(x.name||'')))){
+a.items.push({id:'catering-kids-7-2026',category:'base',name:'Catering Kids (7 pax × ₱250)',due:1750,paid:0,priceStatus:'Estimated',note:'7 kids × ₱250 per kid = ₱1,750. Separate from adult catering.'});
+}
+
+if(a.requestedBudgetEntriesNov2026)return seedVendorGuides(a);
+const findByName=(names)=>a.items.find(x=>names.includes(x.name.trim().toLowerCase()));
+let lechon=findByName(['lechon baboy','lechon']);
+if(!lechon){lechon={id:'requested-lechon-baboy-2026',category:'other',name:'Lechon Baboy',due:12000,paid:0,note:''};a.items.push(lechon)}
+lechon.category='other';lechon.name='Lechon Baboy';lechon.due=12000;
+lechon.note='₱12,000 (50 pax) | Pending Decision on Additional Pax';
+let meals=findByName(['wedding prep meals & transportation']);
+if(!meals){meals={id:'requested-prep-meals-transport-2026',category:'other',name:'Wedding Prep Meals & Transportation',due:0,paid:0,note:''};a.items.push(meals)}
+meals.category='other';
+meals.note='7:00 AM Onwards – Breakfast & Lunch for Family, Entourage, HMUA, Coordinators & Photo/Video Team. Transportation for HMUA, Coordinators & Photo/Video Team Only. Amount TBD (Actual Cost at Novadeci).';
+let gown=findByName(['wedding gown']);
+if(!gown){gown={id:'requested-wedding-gown-2026',category:'other',name:'Wedding Gown',due:0,paid:0,note:''};a.items.push(gown)}
+gown.category='other';gown.due=0;gown.note='Shouldered by the Bride';
+a.requestedBudgetEntriesNov2026=true;
+return seedVendorGuides(a);
 }
 const defaultAccommodationRooms=[
- {name:'Novadeci Room – Bride',purpose:'Bridal preparation / hair & makeup / getting-ready photos',amount:3500,shares:{Diane:3500,Maricel:0},remarks:'50% DP paid'},
- {name:'1 Pre-Pro Room',purpose:'Preparation / getting-ready room for Catherine’s family members in the entourage and her parents',amount:2000,shares:{Diane:2000,Maricel:0},remarks:'50% DP paid'},
- {name:'3 Pre-Pro Rooms (₱2,000 per room)',purpose:'Preparation / getting-ready rooms for Andrew and family members included in the entourage',amount:6000,shares:{Diane:3000,Maricel:3000},remarks:'50% DP paid by each'}
+{name:'Novadeci Room – Bride',purpose:'Bridal preparation / hair & makeup / getting-ready photos',amount:3500,shares:{Diane:3500,Maricel:0},remarks:'50% DP paid'},
+{name:'1 Pre-Pro Room',purpose:'Preparation / getting-ready room for Catherine’s family members in the entourage and her parents',amount:2000,shares:{Diane:2000,Maricel:0},remarks:'50% DP paid'},
+{name:'3 Pre-Pro Rooms (₱2,000 per room)',purpose:'Preparation / getting-ready rooms for Andrew and family members included in the entourage',amount:6000,shares:{Diane:3000,Maricel:3000},remarks:'50% DP paid by each'}
 ];
 const defaultCatherineItems=[
- {name:'Bridesmaids Sleepwear (Pangtulog)',purpose:'Bridesmaids getting-ready outfit / prep photos',amount:null,shoulderedBy:'Catherine',remarks:'Price to be confirmed'},
- {name:'Bridesmaids Slippers',purpose:'Comfortable footwear during wedding preparation / getting-ready photos',amount:null,shoulderedBy:'Catherine',remarks:'Price to be confirmed'}
+{name:'Bridesmaids Sleepwear (Pangtulog)',purpose:'Bridesmaids getting-ready outfit / prep photos',amount:null,shoulderedBy:'Catherine',remarks:'Price to be confirmed'},
+{name:'Bridesmaids Slippers',purpose:'Comfortable footwear during wedding preparation / getting-ready photos',amount:null,shoulderedBy:'Catherine',remarks:'Price to be confirmed'}
 ];
 function normalizedPersonalRows(rows,defaults,isRoom){
- if(!Array.isArray(rows)||rows.length!==defaults.length)return structuredClone(defaults);
- return defaults.map((fallback,i)=>{const x=rows[i];if(!x||typeof x!=='object')return structuredClone(fallback);
- const amount=x.amount===null&&!isRoom?null:Math.max(0,money(x.amount??fallback.amount));
- if(isRoom){const d=Math.max(0,money(x.shares?.Diane??fallback.shares.Diane)),m=Math.max(0,money(x.shares?.Maricel??fallback.shares.Maricel));if(money(d+m)!==amount)return structuredClone(fallback);
- return {name:String(x.name??fallback.name).slice(0,160),purpose:String(x.purpose??fallback.purpose).slice(0,500),amount,shares:{Diane:d,Maricel:m},remarks:String(x.remarks??fallback.remarks).slice(0,240)};}
- return {name:String(x.name??fallback.name).slice(0,160),purpose:String(x.purpose??fallback.purpose).slice(0,500),amount,shoulderedBy:String(x.shoulderedBy??fallback.shoulderedBy).slice(0,120),remarks:String(x.remarks??fallback.remarks).slice(0,240)};
- });
+if(!Array.isArray(rows)||rows.length!==defaults.length)return structuredClone(defaults);
+return defaults.map((fallback,i)=>{const x=rows[i];if(!x||typeof x!=='object')return structuredClone(fallback);
+const amount=x.amount===null&&!isRoom?null:Math.max(0,money(x.amount??fallback.amount));
+if(isRoom){const d=Math.max(0,money(x.shares?.Diane??fallback.shares.Diane)),m=Math.max(0,money(x.shares?.Maricel??fallback.shares.Maricel));if(money(d+m)!==amount)return structuredClone(fallback);
+return {name:String(x.name??fallback.name).slice(0,160),purpose:String(x.purpose??fallback.purpose).slice(0,500),amount,shares:{Diane:d,Maricel:m},remarks:String(x.remarks??fallback.remarks).slice(0,240)};}
+return {name:String(x.name??fallback.name).slice(0,160),purpose:String(x.purpose??fallback.purpose).slice(0,500),amount,shoulderedBy:String(x.shoulderedBy??fallback.shoulderedBy).slice(0,120),remarks:String(x.remarks??fallback.remarks).slice(0,240)};
+});
 }
 function accommodationShares(){return {Diane:money(sum(state.accommodationRooms.map(r=>r.shares),'Diane')),Maricel:money(sum(state.accommodationRooms.map(r=>r.shares),'Maricel'))}}
 function normalizeVendors(rows){
- if(!Array.isArray(rows))return [];
- return rows.slice(0,30).filter(v=>v&&typeof v==='object').map(v=>({
-  id:String(v.id||id()).slice(0,100),name:String(v.name||'').slice(0,120),
-  service:String(v.service||'').slice(0,150),status:['Selected','Confirmed','Pending'].includes(v.status)?v.status:'Selected',
-  notes:String(v.notes||'').slice(0,800),
-  photo:typeof v.photo==='string' && /^data:image\/(?:jpeg|png|webp);base64,/.test(v.photo) && v.photo.length<300000?v.photo:'',
-  attachments:Array.isArray(v.attachments)?v.attachments.slice(0,12).filter(a=>a&&typeof a.data==='string'&&/^data:(?:image\/jpeg|application\/pdf);base64,/.test(a.data)&&a.data.length<440000).map(a=>({name:String(a.name||'Attachment').slice(0,120),type:a.type==='application/pdf'?'application/pdf':'image/jpeg',data:a.data})):[]
- })).filter(v=>v.name&&v.service);
+if(!Array.isArray(rows))return [];
+return rows.slice(0,30).filter(v=>v&&typeof v==='object').map(v=>({
+id:String(v.id||id()).slice(0,100),name:String(v.name||'').slice(0,120),
+service:String(v.service||'').slice(0,150),status:['Selected','Confirmed','Pending'].includes(v.status)?v.status:'Selected',
+notes:String(v.notes||'').slice(0,800),
+photo:typeof v.photo==='string' && /^data:image\/(?:jpeg|png|webp);base64,/.test(v.photo) && v.photo.length<300000?v.photo:'',
+attachments:Array.isArray(v.attachments)?v.attachments.slice(0,12).filter(a=>a&&typeof a.data==='string'&&/^data:(?:image\/jpeg|application\/pdf);base64,/.test(a.data)&&a.data.length<440000).map(a=>({name:String(a.name||'Attachment').slice(0,120),type:a.type==='application/pdf'?'application/pdf':'image/jpeg',data:a.data})):[]
+})).filter(v=>v.name&&v.service);
 }
 const defaultPaymentSchedule=[{"id":"schedule-1","date":"2026-02-22","vendor":"Web Events Place","amount":5000.0,"details":"Down Payment","status":"Paid"},{"id":"schedule-2","date":"2026-03-22","vendor":"Great Creation","amount":2500.0,"details":"Reservation Fee","status":"Paid"},{"id":"schedule-3","date":"2026-03-22","vendor":"FLCTY MHU – Makeup Artist","amount":3300.0,"details":"20% Down Payment","status":"Paid"},{"id":"schedule-4","date":"2026-09-14","vendor":"Great Creation","amount":6599.7,"details":"Additional Payment","status":"Paid"},{"id":"schedule-5","date":"2026-11-15","vendor":"Web Events Place","amount":null,"details":"70% Down Payment","status":"Scheduled"},{"id":"schedule-6","date":"2026-12-16","vendor":"Web Events Place","amount":null,"details":"30% Remaining Balance less Reservation Fee","status":"Scheduled"},{"id":"schedule-7","date":"2026-12-23","vendor":"FLCTY MHU – Makeup Artist","amount":13199.0,"details":"80% Remaining Balance","status":"Scheduled"},{"id":"schedule-8","date":"2026-12-23","vendor":"FLCTY MHU – OTD Coordinator","amount":6801.0,"details":"Final Payment (₱8,000 total less ₱1,199 paid)","status":"Scheduled"},{"id":"schedule-9","date":"2026-12-23","vendor":"Great Creation","amount":12899.3,"details":"70% Remaining Balance less Reservation Fee","status":"Scheduled"},{"id":"schedule-10","date":"2026-12-23","vendor":"Rodel Usana (Host)","amount":7500.0,"details":"Full Payment","status":"Scheduled"},{"id":"schedule-11","date":"2026-12-23","vendor":"Wedding Cake","amount":2100.0,"details":"Final Payment (₱2,600 total less ₱500 paid)","status":"Tentative"}];
 function fresh(){return ensureFundAdjustment(applyRequestedBudgetEntries({paymentSchedule:structuredClone(defaultPaymentSchedule),vendors:[],accommodationRooms:structuredClone(defaultAccommodationRooms),catherineItems:structuredClone(defaultCatherineItems),accommodationPaid:{Diane:4250,Maricel:1500},previousOther:0,pax:150,rate:550,items:defaults.map((x,i)=>({id:'init-'+(i>=10?i+1:i),category:x[0],name:x[1],due:x[2],paid:x[3],note:x[4]})),contributions:startingContributions(),otherExpenses:originalOtherExpenses()}))}
 function ensureFundAdjustment(a){
- // One-time cash balance adjustment, not a new supplier charge or a duplicate prenup cost.
- // Kuya Jeck's original direct ₱3,000 prenup support remains recognized separately.
- if(!a.jeckFundAdjustmentNov2026){
-   if(!a.otherExpenses.some(x=>x.id==='fund-adjustment-3000-nov2026')){
-     a.otherExpenses.push({id:'fund-adjustment-3000-nov2026',name:'Wedding fund cash adjustment',amount:3000,date:'2026-11-11',note:'₱3,000 taken from available wedding cash; separate from Kuya Jeck’s ₱3,000 direct prenup support (outside wedding fund).'});
-   }
-   a.jeckFundAdjustmentNov2026=true;
- }
- return a;
+// One-time cash balance adjustment, not a new supplier charge or a duplicate prenup cost.
+// Kuya Jeck's original direct ₱3,000 prenup support remains recognized separately.
+if(!a.jeckFundAdjustmentNov2026){
+if(!a.otherExpenses.some(x=>x.id==='fund-adjustment-3000-nov2026')){
+a.otherExpenses.push({id:'fund-adjustment-3000-nov2026',name:'Wedding fund cash adjustment',amount:3000,date:'2026-11-11',note:'₱3,000 taken from available wedding cash; separate from Kuya Jeck’s ₱3,000 direct prenup support (outside wedding fund).'});
+}
+a.jeckFundAdjustmentNov2026=true;
+}
+return a;
 }
 function normalize(a){if(!a||!Array.isArray(a.items))throw Error('Not a compatible backup');const legacyOpening=!a.sponsorModelV4 && Object.hasOwn(a,'originalFund') ? startingContributions(money(a.originalFund)):[];return ensureFundAdjustment(applyRequestedBudgetEntries({paymentSchedule:Array.isArray(a.paymentSchedule)?a.paymentSchedule.slice(0,200).filter(x=>x&&typeof x==='object').map(x=>({id:String(x.id||id()).slice(0,100),date:/^\d{4}-\d{2}-\d{2}$/.test(x.date)?x.date:'',vendor:String(x.vendor||'').slice(0,160),amount:x.amount===null||x.amount===''?null:Math.max(0,money(x.amount)),details:String(x.details||'').slice(0,500),status:['Paid','Scheduled','Tentative','Pending','Overdue','Cancelled'].includes(x.status)?x.status:'Scheduled'})).filter(x=>x.date&&x.vendor):structuredClone(defaultPaymentSchedule),vendors:normalizeVendors(a.vendors),vendorGuidesSeeded2026:!!a.vendorGuidesSeeded2026,novadeciScheduleDec2026Added:!!a.novadeciScheduleDec2026Added,accommodationRooms:normalizedPersonalRows(a.accommodationRooms,defaultAccommodationRooms,true),catherineItems:normalizedPersonalRows(a.catherineItems,defaultCatherineItems,false),accommodationPaid:{Diane:Math.max(0,money(a.accommodationPaid?.Diane??4250)),Maricel:Math.max(0,money(a.accommodationPaid?.Maricel??1500))},requestedBudgetEntriesNov2026:!!a.requestedBudgetEntriesNov2026,jeckFundAdjustmentNov2026:!!a.jeckFundAdjustmentNov2026,sponsorModelV4:true,budgetRevisionNov2026:!!a.budgetRevisionNov2026,erick75000Revision:!!a.erick75000Revision,andrew50000Revision:!!a.andrew50000Revision,previousOther:money(a.previousOther),pax:Math.max(0,Math.floor(Number(a.pax)||0)),rate:money(a.rate),items:a.items.filter(x=>x&&categories[x.category]&&!(x.name==='Prenup Venue'&&money(x.due)===0&&money(x.paid)===0)).map(x=>({id:String(x.id||id()),category:x.category,name:String(x.name||'').slice(0,160),due:money(x.due),paid:money(x.paid),priceStatus:x.priceStatus==='Confirmed'&&money(x.due)>0?'Confirmed':(money(x.due)===0?'TBC':'Estimated'),note:String(x.note||'')==='Original ₱5,000 paid separately from base package line items; payment credit only'?'Catering down payment paid from wedding fund contributions. Already counted in supplier payments and deducted from remaining cash fund; do not deduct twice.':String(x.note||'')})),contributions:[...legacyOpening,...(a.contributions||[]).filter(x=>x&&typeof x.name==='string'&&x.name.trim()).map(x=>({...x,id:String(x.id||id()),name:x.name.trim()==='Erick'?'Eric':x.name.trim().slice(0,100),amount:money(x.amount)}))],otherExpenses:(a.otherExpenses||[]).filter(x=>x&&typeof x.name==='string').map(x=>({...x,name:/^mamanhikan$/i.test(x.name)?'Pamamanhikan':x.name,amount:money(x.amount)}))}))}
 let state;try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLDKEY);state=raw?normalize(JSON.parse(raw)):fresh()}catch{state=fresh()}
- // Apply this budget-list revision once to existing browser data, without changing recorded payments.
- // Only change untouched old default entries; retain user-customized prices and paid amounts.
- if(!state.budgetRevisionNov2026){
-   const kidsBoy=state.items.find(x=>x.name==='Entourage Attire Boy'&&x.category==='optional');
-   const kidsGirl=state.items.find(x=>x.name==='Entourage Attire Girl'&&x.category==='optional');
-   if(kidsBoy&&kidsGirl&&kidsBoy.due===1750&&kidsGirl.due===3200&&kidsBoy.paid===0&&kidsGirl.paid===0){
-     kidsBoy.name='Entourage Attire (kids)';kidsBoy.due=3500;kidsBoy.note='Budget estimate';
-     state.items=state.items.filter(x=>x!==kidsGirl);
-   }
-   const updates=[
-     ['Ceremony Essentials and flower girl basket',1196,0,'Price not yet confirmed'],
-     ['Souvenirs for the principal sponsors',0,4500,'Budget estimate'],
-     ['Souvenirs for the bridesmaid and groomsmen',0,2850,'Budget estimate'],
-     ['Giveaways for the guests',0,6600,'Budget estimate']
-   ];
-   for(const [name,oldDue,newDue,note] of updates){const x=state.items.find(v=>v.name===name&&v.due===oldDue&&v.paid===0);if(x){x.due=newDue;x.note=note}}
-   for(const name of ['Pica-Pica','Mobile Bar / Cocktail Drinks']){const x=state.items.find(v=>v.name===name&&v.due===0&&v.paid===0);if(x)x.note='Price not yet confirmed; not included in budget yet'}
-   state.budgetRevisionNov2026=true;
- }
- // Label the ring's ₱10,000 as an estimate in saved browser data, without overriding custom edits.
- const ring=state.items.find(x=>x.name==='Ring'&&x.category==='addons');
- if(ring&&ring.due===10000&&ring.paid===0&&!ring.note.trim())ring.note='Tentative estimate only — ring price not yet confirmed; subject to change';
- // Convert the original unexplained ₱8,846 to two named expenses once, preserving total spending and all new records.
- if(money(state.previousOther)===8846 && !state.otherExpenses.some(x=>x.id==='opening-mamanhikan'||x.id==='opening-prenup-loan')){state.previousOther=0;state.otherExpenses=[...originalOtherExpenses(),...state.otherExpenses]}
- // Apply Kuya Jeck's direct ₱3,000 prenup support once; do not count it as wedding-fund cash.
- for(const x of state.otherExpenses){
-   // Correct the specifically identified historical prenup wedding-fund entry, including older imported copies.
-   // Do not touch unrelated expenses or automatically add a second prenup deduction.
-   const legacyPrenup = x.id==='opening-prenup-loan' ||
-     (x.date==='2026-09-14' && /^prenup\s*[—–-]\s*wedding fund share$/i.test(String(x.name||'').trim()));
-   if(legacyPrenup){
-     x.name='Prenup — wedding fund share';
-     x.date=x.date||'2026-09-14';
-     if(money(x.amount)===3576)x.amount=576;
-     if(money(x.amount)===576)x.note='Sept 14, 2026: total ₱10,576; Diane paid ₱7,000 and Kuya Jeck paid ₱3,000 personally (outside wedding fund); only ₱576 charged to wedding fund.';
-   }
- }
- // One-time migration for browser data: make Eric's recorded contributions total ₱75,000.
- // Add only the difference rather than duplicating an existing Eric contribution.
- if(!state.erick75000Revision){
-   const existingEric=money(state.contributions.filter(x=>x.name==='Eric'||x.name==='Erick').reduce((a,x)=>a+Number(x.amount||0),0));
-   if(existingEric<75000){
-     state.contributions.push({id:'opening-erick-75000',name:'Eric',amount:money(75000-existingEric),date:'',note:'Wedding fund contribution — Kuya Eric'});
-   }
-   state.erick75000Revision=true;
- }
- // One-time browser migration: top up Andrew to ₱50,000, avoiding duplicate credits.
- // Do not override a larger existing amount or alter other sponsor records.
- if(!state.andrew50000Revision){
-   const existingAndrew=money(state.contributions.filter(x=>x.name==='Andrew').reduce((a,x)=>a+Number(x.amount||0),0));
-   if(existingAndrew<50000){
-     state.contributions.push({id:'opening-andrew-50000',name:'Andrew',amount:money(50000-existingAndrew),date:'',note:'Wedding fund contribution — Andrew'});
-   }
-   state.andrew50000Revision=true;
- }
- // Assign only the two original contributions when an older saved tracker has them unassigned.
- for(const c of state.contributions){if(c.id==='opening-45000'&&c.name==='Unassigned'){c.name='Diane';c.note='Original contribution — Diane'}if(c.id==='opening-50000'&&c.name==='Unassigned'){c.name='Maricel';c.note='Original contribution — Maricel'}}
+// Apply this budget-list revision once to existing browser data, without changing recorded payments.
+// Only change untouched old default entries; retain user-customized prices and paid amounts.
+if(!state.budgetRevisionNov2026){
+const kidsBoy=state.items.find(x=>x.name==='Entourage Attire Boy'&&x.category==='optional');
+const kidsGirl=state.items.find(x=>x.name==='Entourage Attire Girl'&&x.category==='optional');
+if(kidsBoy&&kidsGirl&&kidsBoy.due===1750&&kidsGirl.due===3200&&kidsBoy.paid===0&&kidsGirl.paid===0){
+kidsBoy.name='Entourage Attire (kids)';kidsBoy.due=3500;kidsBoy.note='Budget estimate';
+state.items=state.items.filter(x=>x!==kidsGirl);
+}
+const updates=[
+['Ceremony Essentials and flower girl basket',1196,0,'Price not yet confirmed'],
+['Souvenirs for the principal sponsors',0,4500,'Budget estimate'],
+['Souvenirs for the bridesmaid and groomsmen',0,2850,'Budget estimate'],
+['Giveaways for the guests',0,6600,'Budget estimate']
+];
+for(const [name,oldDue,newDue,note] of updates){const x=state.items.find(v=>v.name===name&&v.due===oldDue&&v.paid===0);if(x){x.due=newDue;x.note=note}}
+for(const name of ['Pica-Pica','Mobile Bar / Cocktail Drinks']){const x=state.items.find(v=>v.name===name&&v.due===0&&v.paid===0);if(x)x.note='Price not yet confirmed; not included in budget yet'}
+state.budgetRevisionNov2026=true;
+}
+// Label the ring's ₱10,000 as an estimate in saved browser data, without overriding custom edits.
+const ring=state.items.find(x=>x.name==='Ring'&&x.category==='addons');
+if(ring&&ring.due===10000&&ring.paid===0&&!ring.note.trim())ring.note='Tentative estimate only — ring price not yet confirmed; subject to change';
+// Convert the original unexplained ₱8,846 to two named expenses once, preserving total spending and all new records.
+if(money(state.previousOther)===8846 && !state.otherExpenses.some(x=>x.id==='opening-mamanhikan'||x.id==='opening-prenup-loan')){state.previousOther=0;state.otherExpenses=[...originalOtherExpenses(),...state.otherExpenses]}
+// Apply Kuya Jeck's direct ₱3,000 prenup support once; do not count it as wedding-fund cash.
+for(const x of state.otherExpenses){
+// Correct the specifically identified historical prenup wedding-fund entry, including older imported copies.
+// Do not touch unrelated expenses or automatically add a second prenup deduction.
+const legacyPrenup = x.id==='opening-prenup-loan' ||
+(x.date==='2026-09-14' && /^prenup\s*[—–-]\s*wedding fund share$/i.test(String(x.name||'').trim()));
+if(legacyPrenup){
+x.name='Prenup — wedding fund share';
+x.date=x.date||'2026-09-14';
+if(money(x.amount)===3576)x.amount=576;
+if(money(x.amount)===576)x.note='Sept 14, 2026: total ₱10,576; Diane paid ₱7,000 and Kuya Jeck paid ₱3,000 personally (outside wedding fund); only ₱576 charged to wedding fund.';
+}
+}
+// One-time migration for browser data: make Eric's recorded contributions total ₱75,000.
+// Add only the difference rather than duplicating an existing Eric contribution.
+if(!state.erick75000Revision){
+const existingEric=money(state.contributions.filter(x=>x.name==='Eric'||x.name==='Erick').reduce((a,x)=>a+Number(x.amount||0),0));
+if(existingEric<75000){
+state.contributions.push({id:'opening-erick-75000',name:'Eric',amount:money(75000-existingEric),date:'',note:'Wedding fund contribution — Kuya Eric'});
+}
+state.erick75000Revision=true;
+}
+// One-time browser migration: top up Andrew to ₱50,000, avoiding duplicate credits.
+// Do not override a larger existing amount or alter other sponsor records.
+if(!state.andrew50000Revision){
+const existingAndrew=money(state.contributions.filter(x=>x.name==='Andrew').reduce((a,x)=>a+Number(x.amount||0),0));
+if(existingAndrew<50000){
+state.contributions.push({id:'opening-andrew-50000',name:'Andrew',amount:money(50000-existingAndrew),date:'',note:'Wedding fund contribution — Andrew'});
+}
+state.andrew50000Revision=true;
+}
+// Assign only the two original contributions when an older saved tracker has them unassigned.
+for(const c of state.contributions){if(c.id==='opening-45000'&&c.name==='Unassigned'){c.name='Diane';c.note='Original contribution — Diane'}if(c.id==='opening-50000'&&c.name==='Unassigned'){c.name='Maricel';c.note='Original contribution — Maricel'}}
 const sum=(xs,field)=>xs.reduce((a,x)=>a+Number(x[field]||0),0);
 function totals(){const catering=state.items.find(x=>x.id==='init-2');const add=catering?money(state.pax*state.rate-catering.due):0;const due=money(sum(state.items,'due')+add);const paid=money(sum(state.items,'paid'));const other=money(sum(state.otherExpenses,'amount'));const contrib=money(sum(state.contributions,'amount'));const remaining=money(contrib-paid-state.previousOther-other);return {due,paid,balance:money(due-paid),other,contrib,remaining,add}}
 const SUPABASE_URL='https://ekuiqguyezrdfhdlszpz.supabase.co';
@@ -439,237 +445,237 @@ let publicReadOnly=true;
 let localAtStartup=JSON.stringify(state);
 function statusLine(message){$('status').textContent=message}
 function save(){
- if(publicReadOnly)return;
- state.sponsorModelV4=true;
- try{localStorage.setItem(KEY,JSON.stringify(state))}catch{statusLine('Browser storage failed: download Backup JSON.');return}
- if(cloudReady&&activeUser){
-   cloudRevision++;localStorage.setItem(PENDING_KEY,'1');
-   statusLine('Saved locally • Syncing to Supabase…');
-   clearTimeout(cloudTimer);cloudTimer=setTimeout(flushCloud,400);
- }else statusLine('Local browser copy. Sign in to enable cloud sync.');
+if(publicReadOnly)return;
+state.sponsorModelV4=true;
+try{localStorage.setItem(KEY,JSON.stringify(state))}catch{statusLine('Browser storage failed: download Backup JSON.');return}
+if(cloudReady&&activeUser){
+cloudRevision++;localStorage.setItem(PENDING_KEY,'1');
+statusLine('Saved locally • Syncing to Supabase…');
+clearTimeout(cloudTimer);cloudTimer=setTimeout(flushCloud,400);
+}else statusLine('Local browser copy. Sign in to enable cloud sync.');
 }
 async function flushCloud(){
- if(!cloudReady||!activeUser||cloudBusy)return;
- cloudBusy=true;
- const rev=cloudRevision, uid=activeUser.id, snapshot=JSON.parse(JSON.stringify(state));
- try{
-   const {error}=await cloud.from('wedding_tracker').upsert({user_id:uid,data:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
-   if(error)throw error;
-   if(activeUser?.id===uid){
-     if(rev===cloudRevision){localStorage.removeItem(PENDING_KEY);statusLine('✓ Saved to Supabase • Sync ready across devices.')}
-     else setTimeout(flushCloud,0);
-   }
- }catch(e){statusLine('⚠ Cloud save failed: '+e.message+' — saved in this browser. Retry cloud save before leaving.');}
- finally{cloudBusy=false;if(cloudReady&&activeUser?.id===uid&&rev!==cloudRevision)clearTimeout(cloudTimer),cloudTimer=setTimeout(flushCloud,10)}
+if(!cloudReady||!activeUser||cloudBusy)return;
+cloudBusy=true;
+const rev=cloudRevision, uid=activeUser.id, snapshot=JSON.parse(JSON.stringify(state));
+try{
+const {error}=await cloud.from('wedding_tracker').upsert({user_id:uid,data:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+if(error)throw error;
+if(activeUser?.id===uid){
+if(rev===cloudRevision){localStorage.removeItem(PENDING_KEY);statusLine('✓ Saved to Supabase • Sync ready across devices.')}
+else setTimeout(flushCloud,0);
+}
+}catch(e){statusLine('⚠ Cloud save failed: '+e.message+' — saved in this browser. Retry cloud save before leaving.');}
+finally{cloudBusy=false;if(cloudReady&&activeUser?.id===uid&&rev!==cloudRevision)clearTimeout(cloudTimer),cloudTimer=setTimeout(flushCloud,10)}
 }
 function setAuthMessage(msg){$('cloudLoginMessage').textContent=msg}
 const recoveryFlow=new URLSearchParams(location.search).get('flow')==='recovery';
 let recoverySessionReady=false;
 function showPasswordReset(){
- recoverySessionReady=true;$('cloudAuthForm').hidden=true;$('cloudResetForm').hidden=false;
- lockPage();setAuthMessage('Recovery link verified. Enter your new password.');
+recoverySessionReady=true;$('cloudAuthForm').hidden=true;$('cloudResetForm').hidden=false;
+lockPage();setAuthMessage('Recovery link verified. Enter your new password.');
 }
 function showLoginForm(){ $('cloudAuthForm').hidden=false;$('cloudResetForm').hidden=true; }
 function cleanRecoveryUrl(){if(location.search||location.hash)history.replaceState(null,'',location.pathname);}
 function lockPage(){
- cloudReady=false;activeUser=null;publicReadOnly=true;document.body.classList.add('cloud-locked');document.body.classList.remove('viewer-mode');$('cloudAccess').hidden=false;$('cloudToolbar').hidden=true;
+cloudReady=false;activeUser=null;publicReadOnly=true;document.body.classList.add('cloud-locked');document.body.classList.remove('viewer-mode');$('cloudAccess').hidden=false;$('cloudToolbar').hidden=true;
 }
 function showViewer(){
- cloudReady=false;activeUser=null;publicReadOnly=true;
- document.body.classList.remove('cloud-locked');document.body.classList.add('viewer-mode');
- $('cloudAccess').hidden=true;$('cloudToolbar').hidden=true;$('viewerBanner').hidden=false;
- $('viewerEntry').hidden=false;$('adminLoginButton').hidden=false;
- $('viewerModeLabel').textContent='Public view • Read only';
- updateFields();render();statusLine('Read-only public view • Latest published Supabase data.');
+cloudReady=false;activeUser=null;publicReadOnly=true;
+document.body.classList.remove('cloud-locked');document.body.classList.add('viewer-mode');
+$('cloudAccess').hidden=true;$('cloudToolbar').hidden=true;$('viewerBanner').hidden=false;
+$('viewerEntry').hidden=false;$('adminLoginButton').hidden=false;
+$('viewerModeLabel').textContent='Public view • Read only';
+updateFields();render();statusLine('Read-only public view • Latest published Supabase data.');
 }
 async function loadPublicView(){
- if(!cloud){lockPage();setAuthMessage('Supabase library unavailable. Refresh the page.');return}
- const {data,error}=await cloud.from('wedding_public_snapshot').select('data').eq('id','main').maybeSingle();
- if(error){lockPage();setAuthMessage('Public view not configured yet. Admin: run public-sharing-setup.sql first. '+error.message);return}
- if(!data){lockPage();setAuthMessage('Wala pang published cloud data. Admin: sign in and save the tracker first.');return}
- try{state=normalize(data.data);showViewer()}catch(e){lockPage();setAuthMessage('Cannot display published data: '+e.message)}
+if(!cloud){lockPage();setAuthMessage('Supabase library unavailable. Refresh the page.');return}
+const {data,error}=await cloud.from('wedding_public_snapshot').select('data').eq('id','main').maybeSingle();
+if(error){lockPage();setAuthMessage('Public view not configured yet. Admin: run public-sharing-setup.sql first. '+error.message);return}
+if(!data){lockPage();setAuthMessage('Wala pang published cloud data. Admin: sign in and save the tracker first.');return}
+try{state=normalize(data.data);showViewer()}catch(e){lockPage();setAuthMessage('Cannot display published data: '+e.message)}
 }
 
 function unlockPage(user){
- activeUser=user;cloudReady=true;publicReadOnly=false;document.body.classList.remove('cloud-locked','viewer-mode');$('cloudAccess').hidden=true;$('cloudToolbar').hidden=false;$('viewerBanner').hidden=true;$('adminLoginButton').hidden=true;
- $('cloudAccount').textContent='☁ Supabase • '+user.email;
- updateFields();render();
+activeUser=user;cloudReady=true;publicReadOnly=false;document.body.classList.remove('cloud-locked','viewer-mode');$('cloudAccess').hidden=true;$('cloudToolbar').hidden=false;$('viewerBanner').hidden=true;$('adminLoginButton').hidden=true;
+$('cloudAccount').textContent='☁ Supabase • '+user.email;
+updateFields();render();
 }
 async function openCloudFor(user){
- lockPage();setAuthMessage('Checking admin access…');
- try{
-   const {data:member,error:memberError}=await cloud.from('wedding_admins').select('user_id').eq('user_id',user.id).maybeSingle();
-   if(memberError)throw memberError;
-   if(!member){await cloud.auth.signOut();await loadPublicView();alert('This account is not an authorized wedding tracker admin.');return}
+lockPage();setAuthMessage('Checking admin access…');
+try{
+const {data:member,error:memberError}=await cloud.from('wedding_admins').select('user_id').eq('user_id',user.id).maybeSingle();
+if(memberError)throw memberError;
+if(!member){await cloud.auth.signOut();await loadPublicView();alert('This account is not an authorized wedding tracker admin.');return}
 
-   const {data,error}=await cloud.from('wedding_tracker').select('data').eq('user_id',user.id).maybeSingle();
-   if(error)throw error;
-   if(data){
-     // Keep a pre-cloud browser snapshot in case it differs from the cloud data.
-     try{localStorage.setItem(KEY+'-before-cloud-import',localAtStartup)}catch{}
-     const pending=localStorage.getItem(PENDING_KEY)==='1';
-     if(pending && confirm('May local edits na hindi pa naka-sync. OK = upload local browser copy; Cancel = gamitin ang cloud copy. Gumawa muna ng Backup JSON kung hindi sigurado.')){
-       unlockPage(user);save();return;
-     }
-     const needsBudgetSync=!data.data?.novadeciScheduleDec2026Added || !data.data?.requestedBudgetEntriesNov2026 || !data.data?.vendorGuidesSeeded2026 || (data.data?.contributions||[]).some(x=>x.name==='Erick');
-      state=normalize(data.data);localAtStartup=JSON.stringify(state);
-     try{localStorage.setItem(KEY,JSON.stringify(state));localStorage.removeItem(PENDING_KEY)}catch{}
-     unlockPage(user);if(needsBudgetSync)save();else statusLine('✓ Cloud data loaded from Supabase.');
-   }else{
-     const importLocal=confirm('Wala pang cloud tracker sa account mo. OK = i-import ang existing browser wedding records (₱220,000 fund kung unchanged). Cancel = gumawa ng bagong original tracker.');
-     if(!importLocal)state=fresh();
-     unlockPage(user);save();
-   }
- }catch(e){lockPage();setAuthMessage('Cloud connection failed: '+e.message+'. Check the database SQL / internet and retry login.');}
+const {data,error}=await cloud.from('wedding_tracker').select('data').eq('user_id',user.id).maybeSingle();
+if(error)throw error;
+if(data){
+// Keep a pre-cloud browser snapshot in case it differs from the cloud data.
+try{localStorage.setItem(KEY+'-before-cloud-import',localAtStartup)}catch{}
+const pending=localStorage.getItem(PENDING_KEY)==='1';
+if(pending && confirm('May local edits na hindi pa naka-sync. OK = upload local browser copy; Cancel = gamitin ang cloud copy. Gumawa muna ng Backup JSON kung hindi sigurado.')){
+unlockPage(user);save();return;
+}
+const needsBudgetSync=!data.data?.novadeciScheduleDec2026Added || !data.data?.requestedBudgetEntriesNov2026 || !data.data?.vendorGuidesSeeded2026 || (data.data?.contributions||[]).some(x=>x.name==='Erick');
+state=normalize(data.data);localAtStartup=JSON.stringify(state);
+try{localStorage.setItem(KEY,JSON.stringify(state));localStorage.removeItem(PENDING_KEY)}catch{}
+unlockPage(user);if(needsBudgetSync)save();else statusLine('✓ Cloud data loaded from Supabase.');
+}else{
+const importLocal=confirm('Wala pang cloud tracker sa account mo. OK = i-import ang existing browser wedding records (₱220,000 fund kung unchanged). Cancel = gumawa ng bagong original tracker.');
+if(!importLocal)state=fresh();
+unlockPage(user);save();
+}
+}catch(e){lockPage();setAuthMessage('Cloud connection failed: '+e.message+'. Check the database SQL / internet and retry login.');}
 }
 if(!cloud){setAuthMessage('Cannot load Supabase library. Check internet connection, then refresh the page.');}
 else{
- cloud.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY')showPasswordReset();});
- $('cloudForgot').onclick=async()=>{
-   const email=$('cloudEmail').value.trim();
-   if(!email||!$('cloudEmail').checkValidity()){setAuthMessage('Ilagay muna ang valid email address mo.');return}
-   setAuthMessage('Requesting password reset email…');
-   const {error}=await cloud.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+'?flow=recovery'});
-   setAuthMessage(error?'Unable to send recovery email: '+error.message:'Check Inbox or Spam for your latest password reset link.');
- };
- $('cloudResetForm').onsubmit=async e=>{
-   e.preventDefault();if(!recoverySessionReady){setAuthMessage('Open a new password recovery email link first.');return}
-   const password=$('cloudNewPassword').value;
-   if(password!==$('cloudConfirmPassword').value){setAuthMessage('Hindi magkapareho ang passwords.');return}
-   const {error}=await cloud.auth.updateUser({password});
-   if(error){setAuthMessage(error.message);return}
-   recoverySessionReady=false;await cloud.auth.signOut();cleanRecoveryUrl();showLoginForm();
-   $('cloudPassword').value='';setAuthMessage('Password updated. Log in using your new password.');
- };
- $('cloudCancelLogin').onclick=()=>{showLoginForm();loadPublicView()};
+cloud.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY')showPasswordReset();});
+$('cloudForgot').onclick=async()=>{
+const email=$('cloudEmail').value.trim();
+if(!email||!$('cloudEmail').checkValidity()){setAuthMessage('Ilagay muna ang valid email address mo.');return}
+setAuthMessage('Requesting password reset email…');
+const {error}=await cloud.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+'?flow=recovery'});
+setAuthMessage(error?'Unable to send recovery email: '+error.message:'Check Inbox or Spam for your latest password reset link.');
+};
+$('cloudResetForm').onsubmit=async e=>{
+e.preventDefault();if(!recoverySessionReady){setAuthMessage('Open a new password recovery email link first.');return}
+const password=$('cloudNewPassword').value;
+if(password!==$('cloudConfirmPassword').value){setAuthMessage('Hindi magkapareho ang passwords.');return}
+const {error}=await cloud.auth.updateUser({password});
+if(error){setAuthMessage(error.message);return}
+recoverySessionReady=false;await cloud.auth.signOut();cleanRecoveryUrl();showLoginForm();
+$('cloudPassword').value='';setAuthMessage('Password updated. Log in using your new password.');
+};
+$('cloudCancelLogin').onclick=()=>{showLoginForm();loadPublicView()};
 
- $('cloudAuthForm').onsubmit=async e=>{
-   e.preventDefault();setAuthMessage('Logging in…');
-   const {data,error}=await cloud.auth.signInWithPassword({email:$('cloudEmail').value.trim(),password:$('cloudPassword').value});
-   if(error){setAuthMessage(error.message);return}
-   if(data.user)await openCloudFor(data.user);
- };
- $('cloudLogout').onclick=async()=>{
-   if(localStorage.getItem(PENDING_KEY)==='1'&&!confirm('May hindi pa confirmed na cloud save. Log out anyway?'))return;
-   await cloud.auth.signOut();await loadPublicView();
- };
- $('cloudRetry').onclick=()=>{if(cloudReady){cloudRevision++;localStorage.setItem(PENDING_KEY,'1');flushCloud()}};
- $('adminLoginButton').onclick=()=>{lockPage();setAuthMessage('Log in with the authorized admin account.');};
- cloud.auth.getUser().then(async ({data,error})=>{
-   if(recoveryFlow){
-     if(data?.user&&!error)showPasswordReset();
-     else{lockPage();setAuthMessage('Recovery link invalid or expired. Use Forgot password to request a new link.');}
-   }else if(data?.user&&!error)await openCloudFor(data.user);
-   else await loadPublicView();
- }).catch(e=>{lockPage();setAuthMessage('Connection failed: '+e.message)});
+$('cloudAuthForm').onsubmit=async e=>{
+e.preventDefault();setAuthMessage('Logging in…');
+const {data,error}=await cloud.auth.signInWithPassword({email:$('cloudEmail').value.trim(),password:$('cloudPassword').value});
+if(error){setAuthMessage(error.message);return}
+if(data.user)await openCloudFor(data.user);
+};
+$('cloudLogout').onclick=async()=>{
+if(localStorage.getItem(PENDING_KEY)==='1'&&!confirm('May hindi pa confirmed na cloud save. Log out anyway?'))return;
+await cloud.auth.signOut();await loadPublicView();
+};
+$('cloudRetry').onclick=()=>{if(cloudReady){cloudRevision++;localStorage.setItem(PENDING_KEY,'1');flushCloud()}};
+$('adminLoginButton').onclick=()=>{lockPage();setAuthMessage('Log in with the authorized admin account.');};
+cloud.auth.getUser().then(async ({data,error})=>{
+if(recoveryFlow){
+if(data?.user&&!error)showPasswordReset();
+else{lockPage();setAuthMessage('Recovery link invalid or expired. Use Forgot password to request a new link.');}
+}else if(data?.user&&!error)await openCloudFor(data.user);
+else await loadPublicView();
+}).catch(e=>{lockPage();setAuthMessage('Connection failed: '+e.message)});
 }
 
 function updateFields(){ $('previousOther').value=state.previousOther;$('pax').value=state.pax;$('paxSlider').value=Math.min(300,state.pax);$('rate').value=state.rate }
 
 function accommodationStatus(paid,total){
- if(paid<=0)return 'Unpaid';
- if(paid>=total)return 'Fully Paid';
- return (Math.round(paid/total*10000)/100)+'% Paid';
+if(paid<=0)return 'Unpaid';
+if(paid>=total)return 'Fully Paid';
+return (Math.round(paid/total*10000)/100)+'% Paid';
 }
 function renderAccommodation(){
- const shares=accommodationShares(),paid=state.accommodationPaid;
- const shoulderLabel=r=>['Diane','Maricel'].filter(n=>r.shares[n]>0).map(n=>r.shares.Diane>0&&r.shares.Maricel>0?`${n} (${php(r.shares[n])})`:n).join(' & ')||'Not assigned';
- $('accommodationRoomRows').innerHTML=state.accommodationRooms.map((r,i)=>`<tr><td data-label="Room">${esc(r.name)}</td><td data-label="Purpose">${esc(r.purpose)}</td><td class="num" data-label="Total Amount">${php(r.amount)}</td><td data-label="Shouldered By">${esc(shoulderLabel(r))}</td><td data-label="Remarks">${esc(r.remarks)}</td><td data-label="Action" class="personal-edit"><button type="button" class="btn small" data-personal-kind="room" data-personal-index="${i}">Edit</button></td></tr>`).join('')+`<tr class="reference-total-row"><td data-label="Summary"><b>Total Room Accommodation</b></td><td data-label="Purpose">Personally Shouldered by Diane & Maricel</td><td class="num" data-label="Total Amount"><b>${php(money(shares.Diane+shares.Maricel))}</b></td><td data-label="Shouldered By">Diane & Maricel</td><td data-label="Remarks">Outside Wedding Cash Fund</td><td class="personal-edit" data-label="Action">—</td></tr>`;
- $('catherineItemRows').innerHTML=state.catherineItems.map((r,i)=>`<tr><td data-label="Item">${esc(r.name)}</td><td data-label="Purpose">${esc(r.purpose)}</td><td data-label="Shouldered By">${esc(r.shoulderedBy)}</td><td class="num" data-label="Amount">${r.amount===null?'TBA':php(r.amount)}</td><td data-label="Remarks">${esc(r.remarks)}</td><td class="personal-edit" data-label="Action"><button type="button" class="btn small" data-personal-kind="catherine" data-personal-index="${i}">Edit</button></td></tr>`).join('');
- for(const name of ['Diane','Maricel']){
-  const due=shares[name],amount=paid[name];
-  $('accom'+name+'Share').textContent=php(due);
-  $('accom'+name+'Paid').textContent=php(amount);
-  $('accom'+name+'Balance').textContent=php(money(due-amount));
-  $('accom'+name+'Status').textContent=accommodationStatus(amount,due);
- }
- const total=money(paid.Diane+paid.Maricel),due=money(shares.Diane+shares.Maricel);
- $('accomTotalShare').textContent=php(due);
- $('accomTotalPaid').textContent=php(total);
- $('accomTotalBalance').textContent=php(money(due-total));
- $('accomTotalStatus').textContent=accommodationStatus(total,due);
+const shares=accommodationShares(),paid=state.accommodationPaid;
+const shoulderLabel=r=>['Diane','Maricel'].filter(n=>r.shares[n]>0).map(n=>r.shares.Diane>0&&r.shares.Maricel>0?`${n} (${php(r.shares[n])})`:n).join(' & ')||'Not assigned';
+$('accommodationRoomRows').innerHTML=state.accommodationRooms.map((r,i)=>`<tr><td data-label="Room">${esc(r.name)}</td><td data-label="Purpose">${esc(r.purpose)}</td><td class="num" data-label="Total Amount">${php(r.amount)}</td><td data-label="Shouldered By">${esc(shoulderLabel(r))}</td><td data-label="Remarks">${esc(r.remarks)}</td><td data-label="Action" class="personal-edit"><button type="button" class="btn small" data-personal-kind="room" data-personal-index="${i}">Edit</button></td></tr>`).join('')+`<tr class="reference-total-row"><td data-label="Summary"><b>Total Room Accommodation</b></td><td data-label="Purpose">Personally Shouldered by Diane & Maricel</td><td class="num" data-label="Total Amount"><b>${php(money(shares.Diane+shares.Maricel))}</b></td><td data-label="Shouldered By">Diane & Maricel</td><td data-label="Remarks">Outside Wedding Cash Fund</td><td class="personal-edit" data-label="Action">—</td></tr>`;
+$('catherineItemRows').innerHTML=state.catherineItems.map((r,i)=>`<tr><td data-label="Item">${esc(r.name)}</td><td data-label="Purpose">${esc(r.purpose)}</td><td data-label="Shouldered By">${esc(r.shoulderedBy)}</td><td class="num" data-label="Amount">${r.amount===null?'TBA':php(r.amount)}</td><td data-label="Remarks">${esc(r.remarks)}</td><td class="personal-edit" data-label="Action"><button type="button" class="btn small" data-personal-kind="catherine" data-personal-index="${i}">Edit</button></td></tr>`).join('');
+for(const name of ['Diane','Maricel']){
+const due=shares[name],amount=paid[name];
+$('accom'+name+'Share').textContent=php(due);
+$('accom'+name+'Paid').textContent=php(amount);
+$('accom'+name+'Balance').textContent=php(money(due-amount));
+$('accom'+name+'Status').textContent=accommodationStatus(amount,due);
+}
+const total=money(paid.Diane+paid.Maricel),due=money(shares.Diane+shares.Maricel);
+$('accomTotalShare').textContent=php(due);
+$('accomTotalPaid').textContent=php(total);
+$('accomTotalBalance').textContent=php(money(due-total));
+$('accomTotalStatus').textContent=accommodationStatus(total,due);
 }
 function editPersonal(kind,index){
- const r=(kind==='room'?state.accommodationRooms:state.catherineItems)[index];if(!r)return;
- $('personalEditKind').value=kind;$('personalEditIndex').value=index;
- $('personalEditTitle').textContent=kind==='room'?'Edit Room Accommodation':'Edit Bridesmaids Item';
- $('personalEditName').value=r.name;$('personalEditPurpose').value=r.purpose;
- $('personalEditAmount').value=r.amount===null?'':r.amount;
- $('personalEditRemarks').value=r.remarks;
- $('personalRoomShares').hidden=kind!=='room';$('personalOtherShoulder').hidden=kind==='room';
- if(kind==='room'){$('personalDianeShare').value=r.shares.Diane;$('personalMaricelShare').value=r.shares.Maricel}
- else $('personalEditShoulder').value=r.shoulderedBy;
- $('personalEditor').showModal();
+const r=(kind==='room'?state.accommodationRooms:state.catherineItems)[index];if(!r)return;
+$('personalEditKind').value=kind;$('personalEditIndex').value=index;
+$('personalEditTitle').textContent=kind==='room'?'Edit Room Accommodation':'Edit Bridesmaids Item';
+$('personalEditName').value=r.name;$('personalEditPurpose').value=r.purpose;
+$('personalEditAmount').value=r.amount===null?'':r.amount;
+$('personalEditRemarks').value=r.remarks;
+$('personalRoomShares').hidden=kind!=='room';$('personalOtherShoulder').hidden=kind==='room';
+if(kind==='room'){$('personalDianeShare').value=r.shares.Diane;$('personalMaricelShare').value=r.shares.Maricel}
+else $('personalEditShoulder').value=r.shoulderedBy;
+$('personalEditor').showModal();
 }
 $('closePersonalEditor').onclick=()=>$('personalEditor').close();
 $('personalEditForm').onsubmit=e=>{
- e.preventDefault();if(publicReadOnly)return;
- const kind=$('personalEditKind').value,index=Number($('personalEditIndex').value);
- const rows=kind==='room'?state.accommodationRooms:state.catherineItems;
- if(!rows[index])return;
- const amountInput=$('personalEditAmount').value.trim(),amount=amountInput===''&&kind==='catherine'?null:Number(amountInput);
- if(amount!==null&&(!Number.isFinite(amount)||amount<0)){alert('Enter a valid amount.');return}
- const updated={...rows[index],name:$('personalEditName').value.trim(),purpose:$('personalEditPurpose').value.trim(),amount:amount===null?null:money(amount),remarks:$('personalEditRemarks').value.trim()};
- if(!updated.name||!updated.purpose){alert('Name and purpose are required.');return}
- if(kind==='room'){
-  const d=Number($('personalDianeShare').value),m=Number($('personalMaricelShare').value);
-  if(!Number.isFinite(d)||!Number.isFinite(m)||d<0||m<0||money(d+m)!==updated.amount){alert('Diane and Maricel shares must equal the total room amount.');return}
-  updated.shares={Diane:money(d),Maricel:money(m)};
-  const all=state.accommodationRooms.map((r,i)=>i===index?updated:r);
-  const newShares={Diane:money(all.reduce((s,r)=>s+r.shares.Diane,0)),Maricel:money(all.reduce((s,r)=>s+r.shares.Maricel,0))};
-  if(state.accommodationPaid.Diane>newShares.Diane||state.accommodationPaid.Maricel>newShares.Maricel){alert('New room shares cannot be lower than already recorded actual payments. Edit the payment amount first if you need to correct it.');return}
- }else updated.shoulderedBy=$('personalEditShoulder').value.trim()||'Catherine';
- rows[index]=updated;$('personalEditor').close();commit();
+e.preventDefault();if(publicReadOnly)return;
+const kind=$('personalEditKind').value,index=Number($('personalEditIndex').value);
+const rows=kind==='room'?state.accommodationRooms:state.catherineItems;
+if(!rows[index])return;
+const amountInput=$('personalEditAmount').value.trim(),amount=amountInput===''&&kind==='catherine'?null:Number(amountInput);
+if(amount!==null&&(!Number.isFinite(amount)||amount<0)){alert('Enter a valid amount.');return}
+const updated={...rows[index],name:$('personalEditName').value.trim(),purpose:$('personalEditPurpose').value.trim(),amount:amount===null?null:money(amount),remarks:$('personalEditRemarks').value.trim()};
+if(!updated.name||!updated.purpose){alert('Name and purpose are required.');return}
+if(kind==='room'){
+const d=Number($('personalDianeShare').value),m=Number($('personalMaricelShare').value);
+if(!Number.isFinite(d)||!Number.isFinite(m)||d<0||m<0||money(d+m)!==updated.amount){alert('Diane and Maricel shares must equal the total room amount.');return}
+updated.shares={Diane:money(d),Maricel:money(m)};
+const all=state.accommodationRooms.map((r,i)=>i===index?updated:r);
+const newShares={Diane:money(all.reduce((s,r)=>s+r.shares.Diane,0)),Maricel:money(all.reduce((s,r)=>s+r.shares.Maricel,0))};
+if(state.accommodationPaid.Diane>newShares.Diane||state.accommodationPaid.Maricel>newShares.Maricel){alert('New room shares cannot be lower than already recorded actual payments. Edit the payment amount first if you need to correct it.');return}
+}else updated.shoulderedBy=$('personalEditShoulder').value.trim()||'Catherine';
+rows[index]=updated;$('personalEditor').close();commit();
 };
 document.getElementById('personalShoulderedReference').addEventListener('click',e=>{
- if(publicReadOnly)return;
- const b=e.target.closest('[data-personal-kind]');
- if(b){editPersonal(b.dataset.personalKind,Number(b.dataset.personalIndex));return}
- const button=e.target.closest('[data-accom-edit]');if(!button)return;
- const name=button.dataset.accomEdit,total=accommodationShares()[name];
- const current=state.accommodationPaid[name];
- const answer=prompt('Total actual paid by '+name+' for Novadeci (₱0 to '+php(total)+').\nEnter cumulative amount already paid, not just the latest payment:',String(current));
- if(answer===null)return;
- const value=Number(answer.trim().replace(/,/g,''));
- if(!answer.trim()||!Number.isFinite(value)||value<0||value>total){alert('Please enter a valid total paid amount between ₱0 and '+php(total)+'.');return}
- state.accommodationPaid[name]=money(value);commit();
+if(publicReadOnly)return;
+const b=e.target.closest('[data-personal-kind]');
+if(b){editPersonal(b.dataset.personalKind,Number(b.dataset.personalIndex));return}
+const button=e.target.closest('[data-accom-edit]');if(!button)return;
+const name=button.dataset.accomEdit,total=accommodationShares()[name];
+const current=state.accommodationPaid[name];
+const answer=prompt('Total actual paid by '+name+' for Novadeci (₱0 to '+php(total)+').\nEnter cumulative amount already paid, not just the latest payment:',String(current));
+if(answer===null)return;
+const value=Number(answer.trim().replace(/,/g,''));
+if(!answer.trim()||!Number.isFinite(value)||value<0||value>total){alert('Please enter a valid total paid amount between ₱0 and '+php(total)+'.');return}
+state.accommodationPaid[name]=money(value);commit();
 });
 function renderActualSupport(){
- const sponsorNames=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])];const shares=sponsorNames.filter(n=>n!=='Unassigned').map(n=>[n,n==='Diane'?state.accommodationPaid.Diane:n==='Maricel'?state.accommodationPaid.Maricel:0]);
- const rows=shares.map(([name,dp])=>{const fund=money(sum(state.contributions.filter(x=>x.name===name),'amount'));return {name,fund,dp,total:money(fund+dp)}});
- const unassigned=money(sum(state.contributions.filter(x=>x.name==='Unassigned'),'amount'));
- if(unassigned)rows.push({name:'Unassigned',fund:unassigned,dp:0,total:unassigned});
- $('actualSupportRows').innerHTML=rows.map(x=>`<tr><td data-label="Sponsor"><b>${esc(x.name==='Eric'?'Kuya Eric':x.name==='Maricel'?'Ate Maricel':x.name)}</b></td><td class="num" data-label="Cash Contribution">${php(x.fund)}</td><td class="num" data-label="Novadeci Actual Paid">${php(x.dp)}</td><td class="num" data-label="Total Wedding Support"><b>${php(x.total)}</b></td></tr>`).join('');
- $('actualSupportTotal').textContent=php(money(sum(state.contributions,'amount')+state.accommodationPaid.Diane+state.accommodationPaid.Maricel));
+const sponsorNames=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])];const shares=sponsorNames.filter(n=>n!=='Unassigned').map(n=>[n,n==='Diane'?state.accommodationPaid.Diane:n==='Maricel'?state.accommodationPaid.Maricel:0]);
+const rows=shares.map(([name,dp])=>{const fund=money(sum(state.contributions.filter(x=>x.name===name),'amount'));return {name,fund,dp,total:money(fund+dp)}});
+const unassigned=money(sum(state.contributions.filter(x=>x.name==='Unassigned'),'amount'));
+if(unassigned)rows.push({name:'Unassigned',fund:unassigned,dp:0,total:unassigned});
+$('actualSupportRows').innerHTML=rows.map(x=>`<tr><td data-label="Sponsor"><b>${esc(x.name==='Eric'?'Kuya Eric':x.name==='Maricel'?'Ate Maricel':x.name)}</b></td><td class="num" data-label="Cash Contribution">${php(x.fund)}</td><td class="num" data-label="Novadeci Actual Paid">${php(x.dp)}</td><td class="num" data-label="Total Wedding Support"><b>${php(x.total)}</b></td></tr>`).join('');
+$('actualSupportTotal').textContent=php(money(sum(state.contributions,'amount')+state.accommodationPaid.Diane+state.accommodationPaid.Maricel));
 }
 
 let budgetStatusFilter='all';
 function matchesBudgetFilter(x){
- if(budgetStatusFilter==='all')return true;
- const due=money(x.id==='init-2'?state.pax*state.rate:x.due),paid=money(x.paid);
- if(budgetStatusFilter==='confirmed')return x.priceStatus==='Confirmed'&&due>0;
- if(budgetStatusFilter==='tba')return due===0&&paid===0;
- if(budgetStatusFilter==='paid')return due>0&&paid>=due;
- if(budgetStatusFilter==='partial')return paid>0&&(due===0||paid<due);
- if(budgetStatusFilter==='unpaid')return due>0&&paid===0;
- return true;
+if(budgetStatusFilter==='all')return true;
+const due=money(x.id==='init-2'?state.pax*state.rate:x.due),paid=money(x.paid);
+if(budgetStatusFilter==='confirmed')return x.priceStatus==='Confirmed'&&due>0;
+if(budgetStatusFilter==='tba')return due===0&&paid===0;
+if(budgetStatusFilter==='paid')return due>0&&paid>=due;
+if(budgetStatusFilter==='partial')return paid>0&&(due===0||paid<due);
+if(budgetStatusFilter==='unpaid')return due>0&&paid===0;
+return true;
 }
 function renderUpcomingPaymentPreview(){
- const target=$('upcomingPaymentList');if(!target)return;
- const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Manila',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
- const entries=(state.paymentSchedule||[]).filter(x=>x.date&&!['Paid','Cancelled'].includes(x.status)).sort((a,b)=>a.date.localeCompare(b.date));
- const upcoming=entries.slice(0,4);
- if(!upcoming.length){target.innerHTML='<div class="subtle">Wala pang pending o scheduled payments sa Payment Schedule.</div>';return;}
- target.innerHTML=upcoming.map(x=>{const overdue=x.date<today;const dateText=new Date(x.date+'T12:00:00').toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
- return `<div class="payment-preview-row"><div class="payment-preview-info"><b>${esc(x.vendor)}</b><div class="date-note ${overdue?'overdue-note':''}">${esc(dateText)} · ${overdue?'Past date · ':''}${esc(x.status)}</div><div class="tiny muted">${esc(x.details)}</div></div><div class="payment-preview-amount">${x.amount===null?'TBA':php(x.amount)}</div></div>`;}).join('');
+const target=$('upcomingPaymentList');if(!target)return;
+const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Manila',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const entries=(state.paymentSchedule||[]).filter(x=>x.date&&!['Paid','Cancelled'].includes(x.status)).sort((a,b)=>a.date.localeCompare(b.date));
+const upcoming=entries.slice(0,4);
+if(!upcoming.length){target.innerHTML='<div class="subtle">Wala pang pending o scheduled payments sa Payment Schedule.</div>';return;}
+target.innerHTML=upcoming.map(x=>{const overdue=x.date<today;const dateText=new Date(x.date+'T12:00:00').toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
+return `<div class="payment-preview-row"><div class="payment-preview-info"><b>${esc(x.vendor)}</b><div class="date-note ${overdue?'overdue-note':''}">${esc(dateText)} · ${overdue?'Past date · ':''}${esc(x.status)}</div><div class="tiny muted">${esc(x.details)}</div></div><div class="payment-preview-amount">${x.amount===null?'TBA':php(x.amount)}</div></div>`;}).join('');
 }
 $('openFullSchedule').onclick=()=>$('scheduleTabButton').click();
 document.querySelectorAll('[data-budget-filter]').forEach(b=>b.addEventListener('click',()=>{budgetStatusFilter=b.dataset.budgetFilter;document.querySelectorAll('[data-budget-filter]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});render();}));
-function render(){renderPaymentSchedule();renderUpcomingPaymentPreview();renderVendorGallery();const t=totals();renderAccommodation();renderActualSupport();$('fundLeft').textContent=php(t.remaining);$('fundLeftLine').textContent=php(t.remaining);$('totalBudget').textContent=php(t.due);$('totalPaid').textContent=php(t.paid);$('totalSpent').textContent=php(money(t.paid+state.previousOther+t.other));$('balance').textContent=php(t.balance);$('fundStart').textContent=php(t.contrib);$('contributionTotal').textContent=php(t.contrib);$('supplierDeduct').textContent='−'+php(t.paid);$('previousDeduct').textContent='−'+php(state.previousOther);$('previousDeductRow').style.display=money(state.previousOther)===0?'none':'';$('otherDeduct').textContent='−'+php(t.other);$('cateringCost').textContent=php(state.pax*state.rate);$('publicPaxCount').textContent=state.pax.toLocaleString('en-PH')+' pax';$('publicPaxRate').textContent=php(state.rate);$('fundLeft').style.color=t.remaining<0?'#a63d45':'#176d46';$('fundLeftLine').style.color=t.remaining<0?'#a63d45':'#176d46';const s=$('search').value.toLowerCase().trim();$('groups').innerHTML=Object.entries(categories).map(([key,title])=>{let rows=state.items.filter(x=>x.category===key&&(!s||(x.name+' '+x.note).toLowerCase().includes(s))&&matchesBudgetFilter(x));if(!rows.length)return '';return `<h3 style="margin:20px 0 8px">${title}</h3>${key==='optional'?'<p class="tiny muted">Optional items may be estimated, TBC, or confirmed individually; see each price status below.</p>':''}<div class="tablewrap"><table><thead><tr><th>Expense / Supplier</th><th class="num">Total Price</th><th class="num">DP / Paid</th><th class="num">Balance</th><th>Actions</th></tr></thead><tbody>`+rows.map(x=>`<tr class="${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'budget-confirmed-row':''}"><td><b>${esc(x.name)}</b><div><span class="price-status ${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'confirmed':money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'tbc':'estimated'}">${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'✓ Confirmed':money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':'Estimated'}</span></div><div class="muted tiny">${esc(x.note)}</div></td><td class="num">${money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':php(x.id==='init-2'?state.pax*state.rate:x.due)}</td><td class="num">${php(x.paid)}</td><td class="num">${money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':php((x.id==='init-2'?state.pax*state.rate:x.due)-x.paid)}</td><td><div class="rowactions"><button class="btn small" data-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-delete="${esc(x.id)}">Delete</button></div></td></tr>`).join('')+'</tbody></table></div>'}).join('');$('budgetFilterCount').textContent=budgetStatusFilter==='all'?'Showing all budget items':'Filtered view: '+document.querySelector('[data-budget-filter].active').textContent+' — amounts and calculations are unchanged.';$('otherHistory').innerHTML=state.otherExpenses.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td><b>${esc(x.name.replace(/\bloan\b/gi,'expense'))}</b></td><td class="expense-note-private">${esc(x.note.replace(/\bloan\b/gi,'expense'))}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-other-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-other="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No new other expenses yet.</td></tr>';$('contribHistory').innerHTML=state.contributions.slice().reverse().map(x=>`<tr><td>${esc(x.date||'—')}</td><td>${esc(x.name==='Unassigned'?'Diane / Maricel (unassigned)':x.name)}</td><td>${esc(x.note)}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-contrib-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-contrib="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No contributions yet.</td></tr>';$('sponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>`<div><span class="muted tiny">${n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n} · Cash Contribution</span><b>${php(sum(state.contributions.filter(x=>x.name===n),'amount'))}</b></div>`).join('');$('topSponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>{const label=n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n;const cash=money(sum(state.contributions.filter(x=>x.name===n),'amount'));const dp=n==='Diane'?state.accommodationPaid.Diane:n==='Maricel'?state.accommodationPaid.Maricel:0;return `<div><span class="muted tiny">${esc(label)} · ${dp?'Total Wedding Support':'Cash Contribution'}</span><b>${php(money(cash+dp))}</b>${dp?`<div class="tiny muted" style="margin-top:8px">Cash Contribution: ${php(cash)}</div><div class="tiny muted" style="margin-top:4px">Novadeci Support (Actual Paid): ${php(dp)}</div>`:''}</div>`}).join('');$('topSponsorTotal').textContent=php(t.contrib);const unassigned=money(sum(state.contributions.filter(x=>x.name==='Unassigned'),'amount'));$('unassignedNotice').innerHTML=unassigned?`<b>₱${unassigned.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})} not yet assigned</b> — Unassigned contributions are already included in the fund. Click Edit below to assign a sponsor.`:'All contributions have an assigned sponsor.'}
+function render(){renderPaymentSchedule();renderUpcomingPaymentPreview();renderVendorGallery();const t=totals();renderAccommodation();renderActualSupport();$('fundLeft').textContent=php(t.remaining);$('fundLeftLine').textContent=php(t.remaining);$('totalBudget').textContent=php(t.due);$('totalPaid').textContent=php(t.paid);$('totalSpent').textContent=php(money(t.paid+state.previousOther+t.other));$('balance').textContent=php(t.balance);$('fundStart').textContent=php(t.contrib);$('contributionTotal').textContent=php(t.contrib);$('supplierDeduct').textContent='−'+php(t.paid);$('previousDeduct').textContent='−'+php(state.previousOther);$('previousDeductRow').style.display=money(state.previousOther)===0?'none':'';$('otherDeduct').textContent='−'+php(t.other);$('cateringCost').textContent=php(state.pax*state.rate);$('cateringCombined').textContent=php(state.pax*state.rate+money(state.items.find(x=>x.id==='catering-kids-7-2026')?.due??1750));$('publicPaxCount').textContent=state.pax.toLocaleString('en-PH')+' pax';$('publicPaxRate').textContent=php(state.rate);$('fundLeft').style.color=t.remaining<0?'#a63d45':'#176d46';$('fundLeftLine').style.color=t.remaining<0?'#a63d45':'#176d46';const s=$('search').value.toLowerCase().trim();$('groups').innerHTML=Object.entries(categories).map(([key,title])=>{let rows=state.items.filter(x=>x.category===key&&(!s||(x.name+' '+x.note).toLowerCase().includes(s))&&matchesBudgetFilter(x));if(!rows.length)return '';return `<h3 style="margin:20px 0 8px">${title}</h3>${key==='optional'?'<p class="tiny muted">Optional items may be estimated, TBC, or confirmed individually; see each price status below.</p>':''}<div class="tablewrap"><table><thead><tr><th>Expense / Supplier</th><th class="num">Total Price</th><th class="num">DP / Paid</th><th class="num">Balance</th><th>Actions</th></tr></thead><tbody>`+rows.map(x=>`<tr class="${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'budget-confirmed-row':''}"><td><b>${esc(x.name)}</b><div><span class="price-status ${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'confirmed':money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'tbc':'estimated'}">${x.priceStatus==='Confirmed'&&money(x.id==='init-2'?state.pax*state.rate:x.due)>0?'✓ Confirmed':money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':'Estimated'}</span></div><div class="muted tiny">${esc(x.note)}</div></td><td class="num">${money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':php(x.id==='init-2'?state.pax*state.rate:x.due)}</td><td class="num">${php(x.paid)}</td><td class="num">${money(x.id==='init-2'?state.pax*state.rate:x.due)===0?'TBC':php((x.id==='init-2'?state.pax*state.rate:x.due)-x.paid)}</td><td><div class="rowactions"><button class="btn small" data-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-delete="${esc(x.id)}">Delete</button></div></td></tr>`).join('')+'</tbody></table></div>'}).join('');$('budgetFilterCount').textContent=budgetStatusFilter==='all'?'Showing all budget items':'Filtered view: '+document.querySelector('[data-budget-filter].active').textContent+' — amounts and calculations are unchanged.';$('otherHistory').innerHTML=state.otherExpenses.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td><b>${esc(x.name.replace(/\bloan\b/gi,'expense'))}</b></td><td class="expense-note-private">${esc(x.note.replace(/\bloan\b/gi,'expense'))}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-other-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-other="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No new other expenses yet.</td></tr>';$('contribHistory').innerHTML=state.contributions.slice().reverse().map(x=>`<tr><td>${esc(x.date||'—')}</td><td>${esc(x.name==='Unassigned'?'Diane / Maricel (unassigned)':x.name)}</td><td>${esc(x.note)}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-contrib-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-contrib="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No contributions yet.</td></tr>';$('sponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>`<div><span class="muted tiny">${n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n} · Cash Contribution</span><b>${php(sum(state.contributions.filter(x=>x.name===n),'amount'))}</b></div>`).join('');$('topSponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>{const label=n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n;const cash=money(sum(state.contributions.filter(x=>x.name===n),'amount'));const dp=n==='Diane'?state.accommodationPaid.Diane:n==='Maricel'?state.accommodationPaid.Maricel:0;return `<div><span class="muted tiny">${esc(label)} · ${dp?'Total Wedding Support':'Cash Contribution'}</span><b>${php(money(cash+dp))}</b>${dp?`<div class="tiny muted" style="margin-top:8px">Cash Contribution: ${php(cash)}</div><div class="tiny muted" style="margin-top:4px">Novadeci Support (Actual Paid): ${php(dp)}</div>`:''}</div>`}).join('');$('topSponsorTotal').textContent=php(t.contrib);const unassigned=money(sum(state.contributions.filter(x=>x.name==='Unassigned'),'amount'));$('unassignedNotice').innerHTML=unassigned?`<b>₱${unassigned.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})} not yet assigned</b> — Unassigned contributions are already included in the fund. Click Edit below to assign a sponsor.`:'All contributions have an assigned sponsor.'}
 function renderPaymentSchedule(){
- const body=$('scheduleRows');if(!body)return;
- const data=(state.paymentSchedule||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
- body.innerHTML=data.map(x=>`<tr><td data-label="Date">${esc(new Date(x.date+'T12:00:00').toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'}))}</td><td data-label="Vendor">${esc(x.vendor)}</td><td data-label="Amount" class="num">${x.amount===null?'TBA':php(x.amount)}</td><td data-label="Payment Details">${esc(x.details)}</td><td data-label="Status"><span class="schedule-status">${esc(x.status)}</span></td><td data-label="Actions"><div class="schedule-actions"><button type="button" class="btn small" data-schedule-edit="${esc(x.id)}">Edit</button><button type="button" class="btn small danger" data-schedule-delete="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="6">No payment schedule yet.</td></tr>';
+const body=$('scheduleRows');if(!body)return;
+const data=(state.paymentSchedule||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
+body.innerHTML=data.map(x=>`<tr><td data-label="Date">${esc(new Date(x.date+'T12:00:00').toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'}))}</td><td data-label="Vendor">${esc(x.vendor)}</td><td data-label="Amount" class="num">${x.amount===null?'TBA':php(x.amount)}</td><td data-label="Payment Details">${esc(x.details)}</td><td data-label="Status"><span class="schedule-status">${esc(x.status)}</span></td><td data-label="Actions"><div class="schedule-actions"><button type="button" class="btn small" data-schedule-edit="${esc(x.id)}">Edit</button><button type="button" class="btn small danger" data-schedule-delete="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="6">No payment schedule yet.</td></tr>';
 }
 function editPaymentSchedule(x){if(publicReadOnly)return;$('scheduleForm').reset();$('scheduleEditorTitle').textContent=x?'Edit Payment Schedule':'Add Payment Schedule';$('scheduleId').value=x?.id||'';$('scheduleDate').value=x?.date||'';$('scheduleVendor').value=x?.vendor||'';$('scheduleAmount').value=x?.amount??'';$('scheduleDetails').value=x?.details||'';$('scheduleStatus').value=x?.status||'Scheduled';$('scheduleEditor').showModal()}
 $('scheduleAddButton').onclick=()=>editPaymentSchedule(null);
@@ -692,146 +698,146 @@ $('reset').onclick=()=>{if(publicReadOnly)return;if(confirm('Reset to the origin
 function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)}$('backup').onclick=()=>download('wedding-fund-backup.json',JSON.stringify(state,null,2),'application/json');$('restore').onclick=()=>$('restoreFile').click();$('restoreFile').onchange=async e=>{if(publicReadOnly)return;try{const file=e.target.files[0];if(!file)return;const data=normalize(JSON.parse(await file.text()));if(confirm('Replace current tracker with backup?')){state=data;updateFields();commit()}}catch(err){alert('Invalid backup: '+err.message)}e.target.value=''};
 $('csv').onclick=()=>{const t=totals();let rows=[['Fund Summary','Value'],['Total sponsor contributions',t.contrib],['Supplier paid',t.paid],['Previous other expenses',state.previousOther],['New other expenses',t.other],['Current cash remaining',t.remaining],[],['Prenup breakdown (reference only)','Amount'],['Sept 14, 2026 actual prenup expense',10576],['Diane extra prenup support outside wedding fund',7000],['Kuya Jeck prenup support outside wedding fund',3000],['Prenup charged to wedding fund (already in Other Expenses)',576],[],['Category','Expense','Budget','Paid','Balance','Notes']];state.items.forEach(x=>{const d=x.id==='init-2'?money(state.pax*state.rate):x.due;rows.push([categories[x.category],x.name,d,x.paid,d-x.paid,x.note])});rows.push([],['Other expenses','Date','Name','Amount','Note']);state.otherExpenses.forEach(x=>rows.push(['Other expenses',x.date,x.name,x.amount,x.note]));rows.push([],['Sponsor contributions','Date','Sponsor','Amount','Note']);state.contributions.forEach(x=>rows.push(['Sponsor contributions',x.date,x.name,x.amount,x.note]));download('wedding-fund-tracker.csv','\ufeff'+rows.map(row=>row.map(x=>'"'+String(x??'').replaceAll('"','""')+'"').join(',')).join('\r\n'),'text/csv')};
 // Gallery is informational; it is never included in totals() or expense/payment arrays.
- function renderVendorGallery(){
- const target=$('vendorCards');if(!target)return;
- const vendors=state.vendors||[];
- target.innerHTML=vendors.length?vendors.map(v=>{
- const attachments=Array.isArray(v.attachments)?v.attachments:[];
- const cover=v.photo||attachments.find(a=>a.type.startsWith('image/'))?.data;
- const statusClass=v.status==='Confirmed'?'confirmed':v.status==='Pending'?'pending':'';
- return `<article class="vendor-card">
- ${cover?`<button type="button" class="vendor-cover-button" data-view-cover="${esc(v.id)}" aria-label="View full-size photo of ${esc(v.name)}"><img class="vendor-thumb" src="${cover}" alt="${esc(v.service)} – ${esc(v.name)}" loading="lazy"></button>`:'<div class="vendor-placeholder">📎 No photo uploaded yet</div>'}
- <div class="vendor-body"><h3>${esc(v.name)}</h3><div><b>${esc(v.service)}</b></div>
- <span class="vendor-status ${statusClass}">${v.status==='Confirmed'?'✓ ':''}${esc(v.status)}</span>${v.notes?`<p class="vendor-meta">${esc(v.notes)}</p>`:''}
- ${attachments.length?`<div class="vendor-meta"><b>Attachments (${attachments.length}) · Tap to view</b></div><div class="vendor-attachments">${attachments.map((a,i)=>`<button type="button" class="vendor-attachment" data-view-vendor="${esc(v.id)}" data-view-index="${i}" title="View ${esc(a.name)}">${a.type==='application/pdf'?'📄':'🖼️'} ${esc(a.name)}</button>`).join('')}</div>`:''}
- <div class="vendor-actions"><button class="btn small" type="button" data-vendor-edit="${esc(v.id)}">Edit</button><button class="btn small danger" type="button" data-vendor-delete="${esc(v.id)}">Delete</button></div></div></article>`;
- }).join(''):'<div class="subtle">Wala pang vendor photos o items. Admin can select <b>+ Add Vendor / Item</b> to start the gallery.</div>';
+function renderVendorGallery(){
+const target=$('vendorCards');if(!target)return;
+const vendors=state.vendors||[];
+target.innerHTML=vendors.length?vendors.map(v=>{
+const attachments=Array.isArray(v.attachments)?v.attachments:[];
+const cover=v.photo||attachments.find(a=>a.type.startsWith('image/'))?.data;
+const statusClass=v.status==='Confirmed'?'confirmed':v.status==='Pending'?'pending':'';
+return `<article class="vendor-card">
+${cover?`<button type="button" class="vendor-cover-button" data-view-cover="${esc(v.id)}" aria-label="View full-size photo of ${esc(v.name)}"><img class="vendor-thumb" src="${cover}" alt="${esc(v.service)} – ${esc(v.name)}" loading="lazy"></button>`:'<div class="vendor-placeholder">📎 No photo uploaded yet</div>'}
+<div class="vendor-body"><h3>${esc(v.name)}</h3><div><b>${esc(v.service)}</b></div>
+<span class="vendor-status ${statusClass}">${v.status==='Confirmed'?'✓ ':''}${esc(v.status)}</span>${v.notes?`<p class="vendor-meta">${esc(v.notes)}</p>`:''}
+${attachments.length?`<div class="vendor-meta"><b>Attachments (${attachments.length}) · Tap to view</b></div><div class="vendor-attachments">${attachments.map((a,i)=>`<button type="button" class="vendor-attachment" data-view-vendor="${esc(v.id)}" data-view-index="${i}" title="View ${esc(a.name)}">${a.type==='application/pdf'?'📄':'🖼️'} ${esc(a.name)}</button>`).join('')}</div>`:''}
+<div class="vendor-actions"><button class="btn small" type="button" data-vendor-edit="${esc(v.id)}">Edit</button><button class="btn small danger" type="button" data-vendor-delete="${esc(v.id)}">Delete</button></div></div></article>`;
+}).join(''):'<div class="subtle">Wala pang vendor photos o items. Admin can select <b>+ Add Vendor / Item</b> to start the gallery.</div>';
 }
 function openVendorEditor(v){
- if(publicReadOnly)return;
- $('vendorForm').reset();$('vendorError').textContent='';$('vendorId').value=v?.id||'';
- $('vendorName').value=v?.name||'';$('vendorService').value=v?.service||'';
- $('vendorState').value=v?.status||'Selected';$('vendorNotes').value=v?.notes||'';
- $('vendorRemovePhoto').checked=false;$('vendorEditorTitle').textContent=v?'Edit Vendor / Item':'Add Vendor / Item';
- const files=v?.attachments||[];
- const existing=$('vendorExistingAttachments');existing.hidden=!files.length;
- existing.innerHTML=files.length?'<b>Current attachments — check to remove:</b>'+files.map((f,i)=>`<label class="vendor-existing-file"><span>${f.type==='application/pdf'?'📄':'🖼️'} ${esc(f.name)}</span><span><input type="checkbox" data-attachment-remove="${i}"> Remove</span></label>`).join(''):'';
- $('vendorEditor').showModal();
+if(publicReadOnly)return;
+$('vendorForm').reset();$('vendorError').textContent='';$('vendorId').value=v?.id||'';
+$('vendorName').value=v?.name||'';$('vendorService').value=v?.service||'';
+$('vendorState').value=v?.status||'Selected';$('vendorNotes').value=v?.notes||'';
+$('vendorRemovePhoto').checked=false;$('vendorEditorTitle').textContent=v?'Edit Vendor / Item':'Add Vendor / Item';
+const files=v?.attachments||[];
+const existing=$('vendorExistingAttachments');existing.hidden=!files.length;
+existing.innerHTML=files.length?'<b>Current attachments — check to remove:</b>'+files.map((f,i)=>`<label class="vendor-existing-file"><span>${f.type==='application/pdf'?'📄':'🖼️'} ${esc(f.name)}</span><span><input type="checkbox" data-attachment-remove="${i}"> Remove</span></label>`).join(''):'';
+$('vendorEditor').showModal();
 }
 $('vendorAddButton').onclick=()=>openVendorEditor(null);
 $('vendorCancelButton').onclick=()=>$('vendorEditor').close();
 let previewFiles=[],previewIndex=0,previewVendor='';
 function showVendorPreview(index){
- if(!previewFiles.length)return;
- previewIndex=(index+previewFiles.length)%previewFiles.length;
- const a=previewFiles[previewIndex];
- $('vendorPreviewTitle').textContent=previewVendor+' — '+a.name;
- $('vendorPreviewCount').textContent=(previewIndex+1)+' of '+previewFiles.length;
- const area=$('vendorPreviewBody');area.replaceChildren();
- if(a.type==='application/pdf'){
-  const frame=document.createElement('iframe');frame.src=a.data;frame.title=a.name;area.appendChild(frame);
- }else{
-  const img=document.createElement('img');img.src=a.data;img.alt=a.name;area.appendChild(img);
- }
- const many=previewFiles.length>1;
- $('vendorPreviewPrev').hidden=!many;$('vendorPreviewNext').hidden=!many;
+if(!previewFiles.length)return;
+previewIndex=(index+previewFiles.length)%previewFiles.length;
+const a=previewFiles[previewIndex];
+$('vendorPreviewTitle').textContent=previewVendor+' — '+a.name;
+$('vendorPreviewCount').textContent=(previewIndex+1)+' of '+previewFiles.length;
+const area=$('vendorPreviewBody');area.replaceChildren();
+if(a.type==='application/pdf'){
+const frame=document.createElement('iframe');frame.src=a.data;frame.title=a.name;area.appendChild(frame);
+}else{
+const img=document.createElement('img');img.src=a.data;img.alt=a.name;area.appendChild(img);
+}
+const many=previewFiles.length>1;
+$('vendorPreviewPrev').hidden=!many;$('vendorPreviewNext').hidden=!many;
 }
 $('vendorPreviewClose').onclick=()=>$('vendorPreview').close();
 $('vendorPreviewPrev').onclick=()=>showVendorPreview(previewIndex-1);
 $('vendorPreviewNext').onclick=()=>showVendorPreview(previewIndex+1);
 $('vendorPreview').addEventListener('keydown',e=>{
- if(e.key==='ArrowLeft'){e.preventDefault();showVendorPreview(previewIndex-1)}
- if(e.key==='ArrowRight'){e.preventDefault();showVendorPreview(previewIndex+1)}
+if(e.key==='ArrowLeft'){e.preventDefault();showVendorPreview(previewIndex-1)}
+if(e.key==='ArrowRight'){e.preventDefault();showVendorPreview(previewIndex+1)}
 });
 $('vendorPreview').addEventListener('close',()=>{$('vendorPreviewBody').replaceChildren();previewFiles=[]});
 $('vendorCards').onclick=e=>{
- const coverButton=e.target.closest('[data-view-cover]');
- if(coverButton){const v=(state.vendors||[]).find(v=>v.id===coverButton.dataset.viewCover);if(!v)return;const attachments=(v.attachments||[]).filter(a=>a.type.startsWith('image/'));previewFiles=v.photo?[{name:'Display Picture',type:'image/jpeg',data:v.photo},...attachments]:attachments;if(!previewFiles.length)return;previewVendor=v.name;showVendorPreview(0);$('vendorPreview').showModal();return;}
- const view=e.target.closest('[data-view-vendor]');
- if(view){
-  const v=(state.vendors||[]).find(v=>v.id===view.dataset.viewVendor);
-  if(!v)return;
-  previewFiles=Array.isArray(v.attachments)?v.attachments:[];
-  previewVendor=v.name;
-  if(!previewFiles.length)return;
-  showVendorPreview(Number(view.dataset.viewIndex)||0);
-  $('vendorPreview').showModal();return;
- }
- if(publicReadOnly)return;
- const edit=e.target.closest('[data-vendor-edit]'),del=e.target.closest('[data-vendor-delete]');
- if(edit){openVendorEditor((state.vendors||[]).find(v=>v.id===edit.dataset.vendorEdit));}
- else if(del&&confirm('Delete this vendor / item and its attachments?')){
-  state.vendors=state.vendors.filter(v=>v.id!==del.dataset.vendorDelete);commit();
- }
+const coverButton=e.target.closest('[data-view-cover]');
+if(coverButton){const v=(state.vendors||[]).find(v=>v.id===coverButton.dataset.viewCover);if(!v)return;const attachments=(v.attachments||[]).filter(a=>a.type.startsWith('image/'));previewFiles=v.photo?[{name:'Display Picture',type:'image/jpeg',data:v.photo},...attachments]:attachments;if(!previewFiles.length)return;previewVendor=v.name;showVendorPreview(0);$('vendorPreview').showModal();return;}
+const view=e.target.closest('[data-view-vendor]');
+if(view){
+const v=(state.vendors||[]).find(v=>v.id===view.dataset.viewVendor);
+if(!v)return;
+previewFiles=Array.isArray(v.attachments)?v.attachments:[];
+previewVendor=v.name;
+if(!previewFiles.length)return;
+showVendorPreview(Number(view.dataset.viewIndex)||0);
+$('vendorPreview').showModal();return;
+}
+if(publicReadOnly)return;
+const edit=e.target.closest('[data-vendor-edit]'),del=e.target.closest('[data-vendor-delete]');
+if(edit){openVendorEditor((state.vendors||[]).find(v=>v.id===edit.dataset.vendorEdit));}
+else if(del&&confirm('Delete this vendor / item and its attachments?')){
+state.vendors=state.vendors.filter(v=>v.id!==del.dataset.vendorDelete);commit();
+}
 };
 async function compressVendorPhoto(file){
- if(file.size>8*1024*1024)throw Error('Photo must be 8 MB or smaller.');
- if(!/^image\/(jpeg|png|webp|gif)$/.test(file.type))throw Error('Choose JPG, PNG, WebP or GIF images.');
- const bitmap=await createImageBitmap(file);
- try{
-  // Smaller JPEGs prevent gallery data from filling up as quickly.
-  // This does not change any previously uploaded attachment.
-  const sizes=[640,480,360,280];
-  let smallest='';
-  for(const maxSide of sizes){
-   const scale=Math.min(1,maxSide/Math.max(bitmap.width,bitmap.height));
-   const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
-   const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
-   for(const quality of [.65,.48,.34]){
-    const data=canvas.toDataURL('image/jpeg',quality);
-    if(!smallest||data.length<smallest.length)smallest=data;
-    if(data.length<=65000)return data;
-   }
-  }
-  if(smallest&&smallest.length<=110000)return smallest;
-  throw Error('Photo is too large after compression. Try a smaller image.');
- }finally{bitmap.close?.();}
+if(file.size>8*1024*1024)throw Error('Photo must be 8 MB or smaller.');
+if(!/^image\/(jpeg|png|webp|gif)$/.test(file.type))throw Error('Choose JPG, PNG, WebP or GIF images.');
+const bitmap=await createImageBitmap(file);
+try{
+// Smaller JPEGs prevent gallery data from filling up as quickly.
+// This does not change any previously uploaded attachment.
+const sizes=[640,480,360,280];
+let smallest='';
+for(const maxSide of sizes){
+const scale=Math.min(1,maxSide/Math.max(bitmap.width,bitmap.height));
+const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+for(const quality of [.65,.48,.34]){
+const data=canvas.toDataURL('image/jpeg',quality);
+if(!smallest||data.length<smallest.length)smallest=data;
+if(data.length<=65000)return data;
+}
+}
+if(smallest&&smallest.length<=110000)return smallest;
+throw Error('Photo is too large after compression. Try a smaller image.');
+}finally{bitmap.close?.();}
 }
 function fileAsDataUrl(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(Error('Unable to read PDF.'));r.readAsDataURL(file);});}
 async function readVendorAttachment(file){
- if(file.type==='application/pdf'){
-  if(file.size>300*1024)throw Error(file.name+': PDF must be 300 KB or smaller for this tracker.');
-  return {name:file.name.slice(0,120),type:'application/pdf',data:await fileAsDataUrl(file)};
- }
- const data=await compressVendorPhoto(file);
- return {name:file.name.slice(0,120),type:'image/jpeg',data};
+if(file.type==='application/pdf'){
+if(file.size>300*1024)throw Error(file.name+': PDF must be 300 KB or smaller for this tracker.');
+return {name:file.name.slice(0,120),type:'application/pdf',data:await fileAsDataUrl(file)};
+}
+const data=await compressVendorPhoto(file);
+return {name:file.name.slice(0,120),type:'image/jpeg',data};
 }
 $('vendorForm').onsubmit=async e=>{
- e.preventDefault();if(publicReadOnly)return;
- const name=$('vendorName').value.trim(),service=$('vendorService').value.trim();if(!name||!service)return;
- const old=state.vendors.find(v=>v.id===$('vendorId').value);
- if(!old&&state.vendors.length>=30){$('vendorError').textContent='Maximum 30 gallery items.';return;}
- const btn=$('vendorSaveButton');btn.disabled=true;$('vendorError').textContent='';
- try{
-  const photo=$('vendorRemovePhoto').checked?'':(old?.photo||'');
-  const removed=new Set([...$('vendorExistingAttachments').querySelectorAll('[data-attachment-remove]:checked')].map(x=>Number(x.dataset.attachmentRemove)));
-  const attachments=(old?.attachments||[]).filter((_,i)=>!removed.has(i));
-  const uploads=[...$('vendorAttachments').files];
-  if(uploads.length>4)throw Error('Choose up to 4 new attachments per save.');
-  if(attachments.length+uploads.length>12)throw Error('Maximum 12 attachments per vendor.');
-  for(const f of uploads)attachments.push(await readVendorAttachment(f));
-  const row={id:old?.id||id(),name,service,status:$('vendorState').value,notes:$('vendorNotes').value.trim(),photo,attachments};
-  const others=state.vendors.filter(v=>v.id!==row.id);
-  if(JSON.stringify([...others,row]).length>1800000)throw Error('Gallery cloud-data capacity reached. Remove older attachments or PDFs, or try fewer photos. Existing files are not deleted automatically.');
-  if(old)state.vendors=state.vendors.map(v=>v.id===old.id?row:v);
-  else state.vendors.push(row);
-  $('vendorEditor').close();commit();
- }catch(err){$('vendorError').textContent=err.message||'Could not save attachment.';}
- finally{btn.disabled=false;}
+e.preventDefault();if(publicReadOnly)return;
+const name=$('vendorName').value.trim(),service=$('vendorService').value.trim();if(!name||!service)return;
+const old=state.vendors.find(v=>v.id===$('vendorId').value);
+if(!old&&state.vendors.length>=30){$('vendorError').textContent='Maximum 30 gallery items.';return;}
+const btn=$('vendorSaveButton');btn.disabled=true;$('vendorError').textContent='';
+try{
+const photo=$('vendorRemovePhoto').checked?'':(old?.photo||'');
+const removed=new Set([...$('vendorExistingAttachments').querySelectorAll('[data-attachment-remove]:checked')].map(x=>Number(x.dataset.attachmentRemove)));
+const attachments=(old?.attachments||[]).filter((_,i)=>!removed.has(i));
+const uploads=[...$('vendorAttachments').files];
+if(uploads.length>4)throw Error('Choose up to 4 new attachments per save.');
+if(attachments.length+uploads.length>12)throw Error('Maximum 12 attachments per vendor.');
+for(const f of uploads)attachments.push(await readVendorAttachment(f));
+const row={id:old?.id||id(),name,service,status:$('vendorState').value,notes:$('vendorNotes').value.trim(),photo,attachments};
+const others=state.vendors.filter(v=>v.id!==row.id);
+if(JSON.stringify([...others,row]).length>1800000)throw Error('Gallery cloud-data capacity reached. Remove older attachments or PDFs, or try fewer photos. Existing files are not deleted automatically.');
+if(old)state.vendors=state.vendors.map(v=>v.id===old.id?row:v);
+else state.vendors.push(row);
+$('vendorEditor').close();commit();
+}catch(err){$('vendorError').textContent=err.message||'Could not save attachment.';}
+finally{btn.disabled=false;}
 };
 updateFields();render();
 })();
 </script><script>
 // Tabs control presentation only; no budget, payment, or cloud data is changed.
 (function(){
- const buttons=[document.getElementById('budgetTabButton'),document.getElementById('scheduleTabButton'),document.getElementById('vendorsTabButton')];
- const panels=[document.getElementById('budgetTab'),document.getElementById('scheduleTab'),document.getElementById('vendorsTab')];
- function selectTab(index){
-  buttons.forEach((button,i)=>{button.classList.toggle('active',i===index);button.setAttribute('aria-selected',String(i===index));button.tabIndex=i===index?0:-1;panels[i].hidden=i!==index});
- }
- buttons.forEach((button,i)=>{
-  button.addEventListener('click',()=>selectTab(i));
-  button.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();const next=(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;selectTab(next);buttons[next].focus()}});
- });
+const buttons=[document.getElementById('budgetTabButton'),document.getElementById('scheduleTabButton'),document.getElementById('vendorsTabButton')];
+const panels=[document.getElementById('budgetTab'),document.getElementById('scheduleTab'),document.getElementById('vendorsTab')];
+function selectTab(index){
+buttons.forEach((button,i)=>{button.classList.toggle('active',i===index);button.setAttribute('aria-selected',String(i===index));button.tabIndex=i===index?0:-1;panels[i].hidden=i!==index});
+}
+buttons.forEach((button,i)=>{
+button.addEventListener('click',()=>selectTab(i));
+button.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();const next=(i+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;selectTab(next);buttons[next].focus()}});
+});
 })();
 </script></body></html>
