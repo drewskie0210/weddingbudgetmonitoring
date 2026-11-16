@@ -164,7 +164,7 @@ body.viewer-mode .expense-note-private,body.viewer-mode .admin-private{display:n
 .budget-grand-grid span{display:block;color:#617168;font-size:12px}
 .budget-grand-grid strong{display:block;font-size:20px;margin-top:6px;overflow-wrap:anywhere}
 @media(max-width:600px){.budget-grand-grid{grid-template-columns:1fr}}
-</style></head><body class="cloud-locked">
+</style><style id="mainSupplierSummaryStyle">.main-supplier-summary{margin-top:18px;padding:16px;border:1px solid #d6e7db;border-radius:14px;background:#fbfdfb}.main-supplier-summary h3{font-size:18px;margin:0 0 8px}.main-supplier-summary .supplier-total-row{background:#edf6ef}.main-supplier-summary .main-supplier-final{background:#dff1e5}.main-supplier-summary .rowactions{gap:5px}@media print{.main-supplier-summary{break-inside:auto}}</style></head><body class="cloud-locked">
 <div class="cloud-access" id="cloudAccess"><section class="panel">
 <div class="eyebrow">Supabase • Secure Cloud Tracker</div><h1 style="font-size:26px">Wedding Fund Tracker Login</h1>
 <p class="lead">Admin login lang ito. Makakakita ang family at sponsors ng published tracker kahit walang login.</p>
@@ -808,6 +808,54 @@ function displayGroup(x){
  for(let i=0;i<displaySections.length-1;i++)if(displaySections[i].re.test(name))return i;
  return displaySections.length-1;
 }
+// Read-only financial rollup: derives exclusively from existing budget entries.
+// Editing opens the original expense editor; this summary NEVER creates payments.
+function renderMainSupplierSummary(){
+ const items=state.items;
+ const specs=[
+  {name:'Web Events Place',find:x=>displayGroup(x)===0},
+  {name:'Great Creation – Photo & Video',find:x=>/Photo\/?Videographer|Photo\s*&\s*Video/i.test(x.name)&&displayGroup(x)===1},
+  {name:'Great Creation – Photobooth',find:x=>/Photobooth/i.test(x.name)&&displayGroup(x)===1},
+  {name:'FLCTY MHU – Makeup Artist',find:x=>/Makeup Artist/i.test(x.name)&&displayGroup(x)===2},
+  {name:'FLCTY MHU – OTD Coordinator',find:x=>/OTD Coordinator/i.test(x.name)&&displayGroup(x)===2},
+  {name:'Rodel Usana – Emcee',find:x=>/Emcee|Rodel Usana/i.test(x.name)&&displayGroup(x)===3},
+  {name:'Cake Supplier',find:x=>/\bCake\b/i.test(x.name)&&displayGroup(x)===5},
+  {name:'Florist – Entourage & Essentials',find:x=>/Florist|Bouquet|Flower Girl Basket/i.test(x.name)&&displayGroup(x)===5}
+ ];
+ const values=x=>({due:money(x.id==='init-2'?state.pax*state.rate:x.due),paid:money(x.paid)});
+ const matchedIds=new Set();
+ const blocks=specs.map(spec=>{
+  const matches=items.filter(x=>!matchedIds.has(x.id)&&spec.find(x));
+  for(const x of matches)matchedIds.add(x.id);
+  return {...spec,items:matches,due:money(matches.reduce((a,x)=>a+values(x).due,0)),paid:money(matches.reduce((a,x)=>a+values(x).paid,0))};
+ });
+ const formatRow=(b)=>{
+  const first=b.items[0];
+  const action=b.items.map(x=>`<button class="btn small" type="button" data-edit="${esc(x.id)}">Edit ${b.items.length>1?esc(x.name):''}</button>`).join(' ');
+  return `<tr><td><b>${esc(b.name)}</b>${b.items.length>1?`<div class="tiny muted">${b.items.length} original expense records</div>`:''}</td><td class="num">${b.items.length?php(b.due):'—'}</td><td class="num">${b.items.length?php(b.paid):'—'}</td><td class="num">${b.items.length?php(money(b.due-b.paid)):'—'}</td><td><div class="rowactions" style="flex-wrap:wrap">${action||'—'}</div></td></tr>`;
+ };
+ const group=(title,parts)=>{
+  const due=money(parts.reduce((s,b)=>s+b.due,0)),paid=money(parts.reduce((s,b)=>s+b.paid,0));
+  return `<tr class="supplier-total-row"><td><b>${esc(title)}</b></td><td class="num"><b>${php(due)}</b></td><td class="num"><b>${php(paid)}</b></td><td class="num"><b>${php(money(due-paid))}</b></td><td class="tiny muted">Summary only</td></tr>`;
+ };
+ const totalDue=money(blocks.reduce((s,b)=>s+b.due,0));
+ const totalPaid=money(blocks.reduce((s,b)=>s+b.paid,0));
+ return `<section aria-label="Main supplier payment summary" class="main-supplier-summary" id="mainSupplierSummary">
+ <h3>⭐ Main Supplier Payment Summary</h3>
+ <p class="tiny muted">Automatic from original records, regardless of search or payment filters. Ang Edit ay mismong original item ang binubuksan; walang additional charge o cash deduction mula sa summary. Grand total sa itaas includes other categories too.</p>
+ <div class="tablewrap"><table><thead><tr><th>Main Supplier / Service</th><th class="num">Total Price</th><th class="num">DP / Paid</th><th class="num">Remaining Balance</th><th>Actions</th></tr></thead><tbody>
+ ${formatRow(blocks[0])}
+ ${group('WEB EVENTS PLACE – TOTAL',[blocks[0]])}
+ ${formatRow(blocks[1])}${formatRow(blocks[2])}
+ ${group('GREAT CREATION – TOTAL',blocks.slice(1,3))}
+ ${formatRow(blocks[3])}${formatRow(blocks[4])}
+ ${group('FLCTY MHU – TOTAL (ONE PAYEE)',blocks.slice(3,5))}
+ ${formatRow(blocks[5])}${formatRow(blocks[6])}${formatRow(blocks[7])}
+ <tr class="main-supplier-final"><td><b>MAIN SUPPLIERS – COMBINED TOTAL</b></td><td class="num"><b>${php(totalDue)}</b></td><td class="num"><b>${php(totalPaid)}</b></td><td class="num"><b>${php(money(totalDue-totalPaid))}</b></td><td class="tiny muted">Not an extra expense</td></tr>
+ </tbody></table></div>
+ <p class="tiny muted">Only the main supplier records above are included here. Cake and Florist are separate suppliers. FLCTY MHU has separate computations for Makeup and OTD, but one combined payee.</p>
+ </section>`;
+}
 function renderSupplierGroups(search){
  const matching=state.items.filter(x=>(!search||(x.name+' '+x.note).toLowerCase().includes(search))&&matchesBudgetFilter(x));
  const allPrices=state.items.reduce((n,x)=>n+money(x.id==='init-2'?state.pax*state.rate:x.due),0);
@@ -828,6 +876,7 @@ function renderSupplierGroups(search){
  }).join('');
  // The grand total is always based on all budget records, even when searching/filtering.
  out+=`<div class="budget-grand-summary"><h3>GRAND TOTAL – ALL WEDDING SUPPLIERS</h3><div class="budget-grand-grid"><div><span>Total Price</span><strong>${php(money(allPrices))}</strong></div><div><span>Total DP / Paid</span><strong>${php(money(allPaid))}</strong></div><div><span>Remaining Supplier Balance</span><strong>${php(money(allPrices-allPaid))}</strong></div></div><p class="tiny muted">All supplier items included, even when a filter is selected. TBC prices excluded until entered. Personally shouldered expenses and Other Expense History are tracked separately.</p></div>`;
+ out+=renderMainSupplierSummary();
  return out;
 }
 function render(){ $('catherinePrenupTotal').textContent=php(state.catherinePrenup?.amount??7000);$('catherinePrenupNoteDisplay').textContent=state.catherinePrenup?.notes||'Estimate only; actual breakdown to follow.';renderPaymentSchedule();renderUpcomingPaymentPreview();renderVendorGallery();const t=totals();renderAccommodation();renderActualSupport();$('fundLeft').textContent=php(t.remaining);$('fundLeftLine').textContent=php(t.remaining);$('totalBudget').textContent=php(t.due);$('totalPaid').textContent=php(t.paid);$('totalSpent').textContent=php(money(t.paid+state.previousOther+t.other));$('balance').textContent=php(t.balance);$('fundStart').textContent=php(t.contrib);$('contributionTotal').textContent=php(t.contrib);$('supplierDeduct').textContent='−'+php(t.paid);$('previousDeduct').textContent='−'+php(state.previousOther);$('previousDeductRow').style.display=money(state.previousOther)===0?'none':'';$('otherDeduct').textContent='−'+php(t.other);const bp=state.items.find(x=>x.id==='base-package-consolidated-2026');$('adultCountLabel').textContent=state.pax;$('kidsCountLabel').textContent=state.kidsPax??7;$('adultCostLabel').textContent=php(state.pax*550);$('kidsCostLabel').textContent=php((state.kidsPax??7)*250);$('combinedPaxLabel').textContent=state.pax+(state.kidsPax??7);$('basePackageCostLabel').textContent=php(bp?.due??(17500+state.pax*550+(state.kidsPax??7)*250));$('basePackageBalanceLabel').textContent=php((bp?.due??91850)-(bp?.paid??69295));$('cateringCost').textContent=php(state.pax*state.rate);$('publicPaxCount').textContent=state.pax.toLocaleString('en-PH')+' pax';$('publicPaxRate').textContent=php(state.rate);$('fundLeft').style.color=t.remaining<0?'#a63d45':'#176d46';$('fundLeftLine').style.color=t.remaining<0?'#a63d45':'#176d46';const s=$('search').value.toLowerCase().trim();$('groups').innerHTML=renderSupplierGroups(s);$('budgetFilterCount').textContent=budgetStatusFilter==='all'?'Showing all budget items':'Filtered view: '+document.querySelector('[data-budget-filter].active').textContent+' — amounts and calculations are unchanged.';$('otherHistory').innerHTML=state.otherExpenses.slice().reverse().map(x=>`<tr><td>${esc(x.date)}</td><td><b>${esc(x.name.replace(/\bloan\b/gi,'expense'))}</b></td><td class="expense-note-private">${esc(x.note.replace(/\bloan\b/gi,'expense'))}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-other-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-other="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No new other expenses yet.</td></tr>';$('contribHistory').innerHTML=state.contributions.slice().reverse().map(x=>`<tr><td>${esc(x.date||'—')}</td><td>${esc(x.name==='Unassigned'?'Diane / Maricel (unassigned)':x.name)}</td><td>${esc(x.note)}</td><td class="num">${php(x.amount)}</td><td><div class="rowactions"><button class="btn small" data-contrib-edit="${esc(x.id)}">Edit</button><button class="btn small danger" data-contrib="${esc(x.id)}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5">No contributions yet.</td></tr>';$('sponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>`<div><span class="muted tiny">${n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n} · Cash Contribution</span><b>${php(sum(state.contributions.filter(x=>x.name===n),'amount'))}</b></div>`).join('');$('topSponsorTiles').innerHTML=[...new Set(['Eric','Diane','Maricel','Andrew',...state.contributions.map(x=>x.name)])].filter(n=>n!=='Unassigned').map(n=>{const label=n==='Eric'?'Kuya Eric':n==='Maricel'?'Ate Maricel':n;const cash=money(sum(state.contributions.filter(x=>x.name===n),'amount'));const dp=n==='Diane'?state.accommodationPaid.Diane:n==='Maricel'?state.accommodationPaid.Maricel:0;return `<div><span class="muted tiny">${esc(label)} · ${dp?'Total Wedding Support':'Cash Contribution'}</span><b>${php(money(cash+dp))}</b>${dp?`<div class="tiny muted" style="margin-top:8px">Cash Contribution: ${php(cash)}</div><div class="tiny muted" style="margin-top:4px">Novadeci Support (Actual Paid): ${php(dp)}</div>`:''}</div>`}).join('');$('topSponsorTotal').textContent=php(t.contrib);const unassigned=money(sum(state.contributions.filter(x=>x.name==='Unassigned'),'amount'));$('unassignedNotice').innerHTML=unassigned?`<b>₱${unassigned.toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})} not yet assigned</b> — Unassigned contributions are already included in the fund. Click Edit below to assign a sponsor.`:'All contributions have an assigned sponsor.'}
