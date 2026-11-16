@@ -272,7 +272,7 @@ body.viewer-mode .expense-note-private,body.viewer-mode .admin-private{display:n
 const categories={base:'Base Package',addons:'Add-Ons',optional:'Optional',other:'Other Budgeted Expenses'};
 const defaults=[
 ['base','Reception',9000,0,''],['base','Lights & Sound',6000,0,''],['base','Catering Adult (pax × rate)',82500,0,'Auto-computed: pax × ₱550. Edit pax or rate above to change.'],['base','Base Package Down Payment',0,5000,'Catering down payment paid from wedding fund contributions. Already counted in supplier payments and deducted from remaining cash fund; do not deduct twice.'],
-['addons','Emcee - Rodel Usana',7500,0,''],['addons','Photo/Videographer - Great Creation',21999,9099.70,'Prenup + wedding day'],['addons','Photobooth - Great Creation',3500,0,'3 hrs unlimited, laminated'],['addons','Makeup Artist - FLCTY MHU',16499,3300,'Prenup + wedding day'],['addons','OTD Coordinator - FLCTY MHU',8000,1199,''],['addons','Garden Ceremony',15000,0,'Includes setup and decors'],['addons','Marriage License Fee',6000,6000,''],['addons','Cake',2600,500,''],['addons','Florist for Entourage',4205,0,''],['addons','Ceremony Essentials and flower girl basket',0,0,'Price not yet confirmed'],['addons','Ring',10000,0,'Tentative estimate only — ring price not yet confirmed; subject to change'],['addons','Pica-Pica',0,0,'Price not yet confirmed; not included in budget yet'],['addons','Mobile Bar / Cocktail Drinks',0,0,'Price not yet confirmed; not included in budget yet'],['addons','Lechon',12000,0,'Good for 50 pax'],
+['addons','Emcee - Rodel Usana',7500,0,''],['addons','Photo/Videographer - Great Creation',21999,9099.70,'Prenup + wedding day'],['addons','Photobooth - Great Creation',3500,0,'3 hrs unlimited, laminated'],['addons','Makeup Artist - FLCTY MHU',16499,3300,'Prenup + wedding day'],['addons','OTD Coordinator - FLCTY MHU',8000,1199,''],['addons','Garden Ceremony',15000,0,'Includes setup and decors'],['addons','Marriage License Fee',6000,6000,''],['addons','Cake',2600,500,''],['addons','Florist for Entourage',4205,0,''],['addons','Ceremony Essentials and flower girl basket',0,0,'Price not yet confirmed'],['addons','Ring',10000,0,'Tentative estimate only — ring price not yet confirmed; subject to change'],['addons','Pica-Pica Food – Separate Supplier',0,0,'Food supplier separate from Web Events Place; price to be confirmed'],['addons','Lechon',12000,0,'Good for 50 pax'],
 ['optional','Entourage Attire (kids)',3500,0,'Budget estimate'],['optional','Souvenirs for the principal sponsors',4500,0,'Budget estimate'],['optional','Souvenirs for the bridesmaid and groomsmen',2850,0,'Budget estimate'],['optional','Giveaways for the guests',6600,0,'Budget estimate']
 ];
 const KEY='wedding-fund-expense-tracker-sponsors-v4', OLDKEY='wedding-fund-expense-tracker-correct-fund-v3';let serial=0;const id=()=>String(Date.now())+'-'+(++serial);const $=x=>document.getElementById(x);const money=n=>Math.round((Number(n)||0)*100)/100;const php=n=>new Intl.NumberFormat('en-PH',{style:'currency',currency:'PHP'}).format(n);const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -304,7 +304,7 @@ const guides=[
 {test:/Lechon/i,name:'Lechon Supplier – To Confirm',service:'Lechon',notes:'Supplier name / details to confirm.'},
 {test:/^Ring$/i,name:'Ring Supplier – To Confirm',service:'Wedding Rings',notes:'Design and supplier to confirm; current budget is tentative.'},
 {test:/Pica-Pica/i,name:'Pica-Pica Supplier – To Confirm',service:'Pica-Pica',notes:'Optional item; price and supplier not yet confirmed.'},
-{test:/Mobile Bar \/ Cocktail Drinks/i,name:'Mobile Bar – To Confirm',service:'Mobile Bar / Cocktail Drinks',notes:'Optional service; supplier not yet confirmed.'}
+
 ];
 const known=a.vendors;
 for(const g of guides){
@@ -387,7 +387,38 @@ function ensureCombinedBasePackage(a){
  a.combinedBasePackageNov2026=true;
  return a;
 }
+function ensureSeparatePicaPicaServices(a){
+ // Keep food and venue setup separate without creating an extra setup charge.
+ if(!Array.isArray(a.items))return a;
+ const legacy=a.items.find(x=>/^Pica[ -]Pica$/i.test(String(x.name||'').trim()));
+ if(legacy){
+  legacy.name='Pica-Pica Food – Separate Supplier';
+  if(!/separate supplier/i.test(String(legacy.note||'')))legacy.note=(legacy.note?legacy.note+' | ':'')+'Food from a separate supplier, not Web Events Place setup.';
+ }
+ // Existing setup entries belong under Web Events Place. If an earlier version
+ // inserted an empty TBC placeholder as well as the actual setup, drop ONLY
+ // the empty, unpaid placeholder. Do not change the ₱1,500 setup or any payments.
+ const isSetup=x=>/Pica[ -]Pica\s*(?:\(Setup\)|Setup)/i.test(String(x.name||''));
+ const setupItems=a.items.filter(isSetup);
+ if(setupItems.length>1){
+  const placeholders=setupItems.filter(x=>money(x.due)===0&&money(x.paid)===0);
+  const actual=setupItems.filter(x=>money(x.due)!==0||money(x.paid)!==0);
+  if(actual.length){
+   a.items=a.items.filter(x=>!placeholders.includes(x));
+  }else{
+   // Multiple unpriced setup placeholders: retain one, do not add a second.
+   a.items=a.items.filter(x=>!isSetup(x)||x===setupItems[0]);
+  }
+ }
+ // Do not auto-create another setup: add a real service using Add New Item if needed.
+ return a;
+}
 function applyRequestedBudgetEntries(a){
+// Remove the cancelled, unpaid Mobile Bar placeholder from saved and fresh data.
+// Any existing paid/customized entry is retained rather than silently deleting money history.
+if(Array.isArray(a.items))a.items=a.items.filter(x=>!(/^Mobile Bar\s*\/\s*Cocktail Drinks$/i.test(String(x.name||'').trim())&&money(x.due)===0&&money(x.paid)===0));
+if(Array.isArray(a.vendors))a.vendors=a.vendors.filter(v=>!(/^guide-2026-mobile-bar/i.test(String(v.id||''))&&/Mobile Bar/i.test(String(v.service||''))));
+ensureSeparatePicaPicaServices(a);
 // The confirmed FLCTY MHU combined package is PHP 20,000. Preserve recorded
 // down payments (including the earlier OTD PHP 1,199) and change only the
 // legacy PHP 8,000 coordinator quote when it is still unchanged.
@@ -476,7 +507,7 @@ const updates=[
 ['Giveaways for the guests',0,6600,'Budget estimate']
 ];
 for(const [name,oldDue,newDue,note] of updates){const x=state.items.find(v=>v.name===name&&v.due===oldDue&&v.paid===0);if(x){x.due=newDue;x.note=note}}
-for(const name of ['Pica-Pica','Mobile Bar / Cocktail Drinks']){const x=state.items.find(v=>v.name===name&&v.due===0&&v.paid===0);if(x)x.note='Price not yet confirmed; not included in budget yet'}
+for(const name of ['Pica-Pica']){const x=state.items.find(v=>v.name===name&&v.due===0&&v.paid===0);if(x)x.note='Price not yet confirmed; not included in budget yet'}
 state.budgetRevisionNov2026=true;
 }
 // Label the ring's ₱10,000 as an estimate in saved browser data, without overriding custom edits.
@@ -760,7 +791,7 @@ if(otherExpensePanel && $('budgetDetails')) $('budgetDetails').after(otherExpens
 // Display groups are derived from item names, not persisted category fields.
 // Editing/deleting uses the original item IDs, keeping cloud and backup formats intact.
 const displaySections=[
- {title:'I. Wedding Venue & Event Place – Web Events Place',re:/Base Package|Garden Ceremony|Lechon|Pica.Pica|Setup.*(?:Lechon|Pica)|(?:Lechon|Pica).*Setup/i},
+ {title:'I. Wedding Venue & Event Place – Web Events Place',re:/Base Package|Garden Ceremony|Lechon|Pica[ -]Pica\s*(?:Setup|\(Setup\))|Setup.*Lechon|Lechon.*Setup/i},
  {title:'II. Photography, Videography & Photobooth – Great Creation',re:/Photo\/?Videographer|Photo\s*&\s*Video|Photobooth|Great Creation/i},
  {title:'III. Bridal Beauty & Wedding Coordination – FLCTY MHU',re:/Makeup Artist|OTD Coordinator|FLCTY MHU/i},
  {title:'IV. Wedding Host & Entertainment',re:/Emcee|Host|Entertainment/i},
@@ -768,8 +799,9 @@ const displaySections=[
  {title:'VI. Wedding Cake & Flowers',re:/\bCake\b|Florist|Bouquet|Flower Girl Basket/i},
  {title:'VII. Wedding Attire & Accessories',re:/Attire|Wedding Gown|Wedding Suit|Wedding Shoes/i},
  {title:'VIII. Wedding Souvenirs & Giveaways',re:/Souvenir|Giveaways|Wedding Favors|Invitations/i},
- {title:'IX. Other Budgeted / Optional Services',re:/Mobile Bar|Cocktail Drinks|Optional/i},
- {title:'X. Other Budgeted Wedding Expenses',re:/$^/}
+ {title:'IX. Additional Food Services – Separate Suppliers',re:/Pica[ -]Pica(?:\s+Food)?/i},
+ {title:'X. Other Budgeted / Optional Services',re:/Optional/i},
+ {title:'XI. Other Budgeted Wedding Expenses',re:/$^/}
 ];
 function displayGroup(x){
  const name=String(x.name||'');
@@ -788,7 +820,7 @@ function renderSupplierGroups(search){
   const due=money(rows.reduce((n,x)=>n+money(x.id==='init-2'?state.pax*state.rate:x.due),0));
   const paid=money(rows.reduce((n,x)=>n+money(x.paid),0));
   const unknown=rows.some(x=>money(x.due)===0);
-  return `<h3 class="supplier-section-title">${esc(title)}</h3><div class="tablewrap"><table><thead><tr><th>Expense / Supplier</th><th class="num">Total Price</th><th class="num">DP / Paid</th><th class="num">Balance</th><th>Actions</th></tr></thead><tbody>${rows.map(row).join('')}<tr class="supplier-total-row"><td><b>SECTION / SUPPLIER TOTAL</b>${unknown?'<div class="tiny muted">Plus TBC items (not yet included)</div>':''}</td><td class="num"><b>${php(due)}</b></td><td class="num"><b>${php(paid)}</b></td><td class="num"><b>${php(money(due-paid))}</b></td><td>One supplier summary</td></tr></tbody></table></div>`;
+  return `<h3 class="supplier-section-title">${esc(title)}</h3><div class="tablewrap"><table><thead><tr><th>Expense / Supplier</th><th class="num">Total Price</th><th class="num">DP / Paid</th><th class="num">Balance</th><th>Actions</th></tr></thead><tbody>${rows.map(row).join('')}<tr class="supplier-total-row"><td><b>${/^(?:I\.|II\.|III\.)/.test(title)?"SUPPLIER TOTAL":"SECTION TOTAL"}</b>${unknown?'<div class="tiny muted">Plus TBC items (not yet included)</div>':''}</td><td class="num"><b>${php(due)}</b></td><td class="num"><b>${php(paid)}</b></td><td class="num"><b>${php(money(due-paid))}</b></td><td>${/^(?:I\.|II\.|III\.)/.test(title)?"Combined supplier summary":"Category subtotal – separate suppliers"}</td></tr></tbody></table></div>`;
  };
  let out=displaySections.map((g,i)=>{
   const rows=matching.filter(x=>displayGroup(x)===i);
